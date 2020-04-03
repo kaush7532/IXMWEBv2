@@ -19,6 +19,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication
 
         #region USB Aux: Resource Strings
         public const string USBAuxRestoredMsg = "USB Aux settings restored";
+        public const string USBAuxStoreMsg = "USB Aux settings saved";
         #endregion
     }
 }
