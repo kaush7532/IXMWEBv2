@@ -10,7 +10,7 @@ using System.Threading;
 
 namespace IXMWEBv2.Devices.RegisterDevice
 {
-    //[TestClass]
+    [TestClass]
     public class RegisterDevice_TC : BaseTest
     {
         private RegisterDevice_AL registerdeviceAL;
