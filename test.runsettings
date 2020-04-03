@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <!-- Configurations that affect the Test Framework -->
+  <RunConfiguration>
+    <MaxCpuCount>1</MaxCpuCount>
+    <!-- Path relative to solution directory -->
+    <!--<ResultsDirectory>.\TestResults</ResultsDirectory>-->
+
+    <!-- [x86] | x64
+      - You can also change it from menu Test, Test Settings, Default Processor Architecture -->
+    <TargetPlatform>x86</TargetPlatform>
+
+    <!-- Framework35 | [Framework40] | Framework45 -->
+    <TargetFrameworkVersion>Framework40</TargetFrameworkVersion>
+
+    <!-- Path to Test Adapters -->
+    <TestAdaptersPaths>%SystemDrive%\Temp\foo;%SystemDrive%\Temp\bar</TestAdaptersPaths>
+  </RunConfiguration>
+
+  <!-- Configurations for data collectors -->
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="Code Coverage" uri="datacollector://Microsoft/CodeCoverage/2.0" assemblyQualifiedName="Microsoft.VisualStudio.Coverage.DynamicCoverageDataCollector, Microsoft.VisualStudio.TraceCollector, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+        <Configuration>
+          <CodeCoverage>
+            <ModulePaths>
+              <Exclude>
+                <ModulePath>.*CPPUnitTestFramework.*</ModulePath>
+              </Exclude>
+            </ModulePaths>
+
+            <!-- We recommend you do not change the following values: -->
+            <UseVerifiableInstrumentation>True</UseVerifiableInstrumentation>
+            <AllowLowIntegrityProcesses>True</AllowLowIntegrityProcesses>
+            <CollectFromChildProcesses>True</CollectFromChildProcesses>
+            <CollectAspDotNet>False</CollectAspDotNet>
+          </CodeCoverage>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+
+  <!-- Parameters used by tests at runtime -->
+  <TestRunParameters>
+    <Parameter name="browser" value="firefox" />
+
+    <Parameter name="ixmWebUrl" value="http://localhost:9108" />
+    <Parameter name="ixmWebUserName" value="admin" />
+    <Parameter name="ixmWebPassword" value="admin@123" />
+    <Parameter name="ixmWebVersion" value="2.1.0.0" />
+    <Parameter name="onlineDeviceIP" value="192.168.137.3" />
+    <Parameter name="onlineDevicePort" value="9734" />
+    <Parameter name="offlineDeviceIP" value="192.168.1.115" />
+    <Parameter name="recordVideo" value ="false" />
+    <Parameter name="devicesOfTree" value="192.168.137.3" />
+
+    <!--<Parameter name="dbconnectionstring" value ="Data Source=IXM-QA-PC5\IXMWEB;Initial Catalog=IXMDB_pROD_2_1;Persist Security Info=True;User ID=sa;Password=Admin@123;MultipleActiveResultSets=True" />-->
+    <Parameter name="dbconnectionstring" value ="Data Source=IXM-QA-KP01\IXMWEB;Initial Catalog= IXMDB_FHH;Persist Security Info=True;User ID=sa;Password=Admin@123;MultipleActiveResultSets=True" />
+
+    <Parameter name="deviceIp" value="192.168.137.3" />
+    <Parameter name="devicePort" value="9734" />
+  </TestRunParameters>-->
+
+  <!-- Adapter Specific sections -->
+
+  <!-- MSTest adapter -->
+  <MSTest>
+    <MapInconclusiveToFailed>True</MapInconclusiveToFailed>
+    <CaptureTraceOutput>false</CaptureTraceOutput>
+    <DeleteDeploymentDirectoryAfterTestRunIsComplete>False</DeleteDeploymentDirectoryAfterTestRunIsComplete>
+    <DeploymentEnabled>True</DeploymentEnabled>
+  </MSTest>
+</RunSettings>

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="Result.css" />
+    <meta charset="utf-8" />
+    <title>IXMWebResult</title>
+</head>
+<body id="testresult">
+    <h3>Result Summary</h3>
+    <div id="tab1">
+        <table id="timedata" style="float: left; width: 50%">
+            <tr>
+                <th colspan="2">Time Data</th>
+            </tr>
+            <tr>
+                <td>Start Time</td>
+                <td>##st##</td>
+            </tr>
+            <tr>
+                <td>End Time</td>
+                <td>##et##</td>
+            </tr>
+            <tr>
+                <td>Duration {hh:mm:ss}</td>
+                <td>##duration##</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="tab2">
+        <table id="resultdata" style="float: left; width: 40%">
+            <tr>
+                <th colspan="2">TestRun Data</th>
+            </tr>
+            <tr>
+                <td>Passed Tests</td>
+                <td>##pass##</td>
+            </tr>
+            <tr>
+                <td>Failed Tests</td>
+                <td>##fail##</td>
+            </tr>
+            <tr>
+                <td>Total Run Tests</td>
+                <td>##total##</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="tab3">
+        <table id="resultrundetails" style="float: left; width: 100%; border: solid 1px black">
+
+            <tr>
+                <th>Sr. No</th>
+                <th>TestMethod Name</th>
+                <th>Result</th>
+                <th>ScreenShot</th>
+                <th>Time-Stamp</th>
+                <th>ExecutionTime(In secs)</th>
+            </tr>
+            <tbody>
+                ##body##
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

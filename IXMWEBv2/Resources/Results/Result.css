@@ -1,0 +1,36 @@
+﻿table {
+    border-collapse: collapse;
+}
+
+    table tbody, th, tr, td {
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+#tab1 {
+    width: 50%;
+    float: left;
+}
+
+#tab2 {
+    width: 50%;
+    float: right;
+}
+
+#tab3 {
+    width: 75%;
+    position: relative;
+    margin-top: 200px;
+}
+
+    #tab3 th {
+        background-color: gainsboro;
+        color: crimson;
+        font-size: large;
+    }
+
+th {
+    background-color: lightseagreen;
+    color: white;
+    font-size: large;
+}

@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\MSTest.TestAdapter.2.1.0\build\net45\MSTest.TestAdapter.props" Condition="Exists('..\packages\MSTest.TestAdapter.2.1.0\build\net45\MSTest.TestAdapter.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D1006E2D-294C-444E-9CE6-9196141EAF13}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IXMWEBv2</RootNamespace>
+    <AssemblyName>IXMWEBv2</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IXMSoft.Business.SDK, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\IXMSoft.Business.SDK.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Encoder, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
+      <HintPath>..\packages\Microsoft.Expression.Encoder.4.0.4276.3\lib\net45\Microsoft.Expression.Encoder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.2.1.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.2.1.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SeleniumExtras.PageObjects, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetSeleniumExtras.PageObjects.3.11.0\lib\net45\SeleniumExtras.PageObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.Support.3.141.0\lib\net45\WebDriver.Support.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dashboard\EnrollmentStatus\EnrollmentStatusLocators.cs" />
+    <Compile Include="Devices\Configurations\Communication\CommunicationResourceStrings.cs" />
+    <Compile Include="Devices\Configurations\Communication\DTMF Settings\DTMFSettings_AL.cs" />
+    <Compile Include="Devices\Configurations\Communication\USBAux Settings\USBAuxPortLocator.cs" />
+    <Compile Include="Devices\Configurations\Communication\USBAux Settings\USBAuxPortSettings_AL.cs" />
+    <Compile Include="Devices\Configurations\Communication\USBAux Settings\USBAuxPortSettings_PO.cs" />
+    <Compile Include="Devices\Configurations\Communication\USBAux Settings\USBAuxPortSettings_TC.cs" />
+    <Compile Include="Devices\Configurations\Communication\EthernetSettings\EthernetSettingsLocators.cs" />
+    <Compile Include="Devices\Configurations\Overview\OverviewTabLocators.cs" />
+    <Compile Include="Devices\DeviceOperations\DeviceOperationsModel.cs" />
+    <Compile Include="Devices\DeviceOperations\DeviceOperations_AL.cs" />
+    <Compile Include="Devices\RegisterDevice\RegisterDeviceEnums.cs" />
+    <Compile Include="Devices\RegisterDevice\RegisterDeviceModel.cs" />
+    <Compile Include="Devices\RegisterDevice\RegisterDevice_AL.cs" />
+    <Compile Include="Devices\RegisterDevice\RegisterDevice_TC.cs" />
+    <Compile Include="Employees\EmployeeOperations\AddEnrollEmployee\AddEmployee_AL.cs" />
+    <Compile Include="Employees\EmployeeList\EmployeeAllAccessLayer.cs" />
+    <Compile Include="LoginandHome\HomeAccessLayer.cs" />
+    <Compile Include="LoginandHome\LoginAccessLayer.cs" />
+    <Compile Include="QuickNavigationPane\Logs\ApplicationLogs\ApplicationLogsLocators.cs" />
+    <Compile Include="QuickNavigationPane\Logs\TransactionLog\TransactionLogs_AL.cs" />
+    <Compile Include="Constants\TestResultType.cs" />
+    <Compile Include="Constants\TestSuite.cs" />
+    <Compile Include="Helper SDK\CommunicationSDK.cs" />
+    <Compile Include="Helper SDK\DeviceInfo_SDK.cs" />
+    <Compile Include="Helper SDK\Device\Device_SDK.cs" />
+    <Compile Include="Models\DBModels\ApplicationLogInfo.cs" />
+    <Compile Include="Models\DBModels\DeviceInfo.cs" />
+    <Compile Include="Models\DBModels\EmployeeInfo.cs" />
+    <Compile Include="Devices\Configurations\Communication\CommunicationModel.cs" />
+    <Compile Include="Models\PageItemsMetadataModel.cs" />
+    <Compile Include="Devices\Configurations\Communication\Communication_PO.cs" />
+    <Compile Include="Devices\Configurations\Communication\DTMF Settings\DTMFSettings_PO.cs" />
+    <Compile Include="Devices\DeviceOperations\DeviceOperations_PO.cs" />
+    <Compile Include="Devices\RegisterDevice\RegisterDevice_PO.cs" />
+    <Compile Include="Employees\EmployeeOperations\AddEnrollEmployee\AddEmployeePage_PO.cs" />
+    <Compile Include="Employees\EmployeeList\EmployeeAllPage_PO.cs" />
+    <Compile Include="LoginandHome\HomePage_PO.cs" />
+    <Compile Include="LoginandHome\LoginPage_PO.cs" />
+    <Compile Include="QuickNavigationPane\Logs\TransactionLog\TransactionLogs_PO.cs" />
+    <Compile Include="LoginandHome\TopBar_PO.cs" />
+    <Compile Include="Devices\Configurations\Communication\CommunicationTabLocators.cs" />
+    <Compile Include="Devices\Configurations\Communication\DTMF Settings\DTMFLocators.cs" />
+    <Compile Include="Devices\DeviceOperations\DeviceOperationsLocators.cs" />
+    <Compile Include="Devices\RegisterDevice\RegisterDeviceLocators.cs" />
+    <Compile Include="LoginandHome\HomePageLocators.cs" />
+    <Compile Include="LoginandHome\LoginPageLocators.cs" />
+    <Compile Include="QuickNavigationPane\Logs\TransactionLog\TransactionLogsLocators.cs" />
+    <Compile Include="Employees\EmployeeOperations\AddEnrollEmployee\AddEmployeePageLocators.cs" />
+    <Compile Include="Employees\EmployeeList\EmployeeListPageLocators.cs" />
+    <Compile Include="Devices\Configurations\Communication\DTMF Settings\DTMFSettings_TC.cs" />
+    <Compile Include="Devices\DeviceOperations\DeviceOperations_TC.cs" />
+    <Compile Include="Employees\EmployeeOperations\AddEnrollEmployee\AddEmployee_TC.cs" />
+    <Compile Include="LoginandHome\LoginTests_TC.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuickNavigationPane\Logs\TransactionLog\TransactionLogs_TC.cs" />
+    <Compile Include="QuickNavigationPane\Sync\SyncLocators.cs" />
+    <Compile Include="QuickNavigationPane\Sync\Sync_AL.cs" />
+    <Compile Include="QuickNavigationPane\Sync\Sync_PO.cs" />
+    <Compile Include="QuickNavigationPane\Sync\Sync_TC.cs" />
+    <Compile Include="Resources\CommonLocators\CommonLocators.cs" />
+    <Compile Include="Utils\BaseTest.cs" />
+    <Compile Include="Utils\DBInteraction.cs" />
+    <Compile Include="Utils\GenericBasePage.cs" />
+    <Compile Include="Utils\IxmWebUtils.cs" />
+    <Compile Include="Utils\Logger.cs" />
+    <Compile Include="Utils\OrderedTestList.cs" />
+    <Compile Include="Utils\Result.cs" />
+    <Compile Include="Utils\CommonUtils.cs" />
+    <Compile Include="WebDriverFactory\DriverManager.cs" />
+    <Compile Include="WebDriverFactory\MainAssembly.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Resources\Modules.json" />
+    <None Include="Resources\TestData\Config.json" />
+    <None Include="Resources\TestData\Config\GeneralInfo.json" />
+    <None Include="Resources\TestData\IXMUsers.json" />
+    <Compile Include="Utils\OrderedTestUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Devices\Configurations\Communication\IXMWEB Server Settings\" />
+    <Folder Include="IXMTIME\DailyAttendance\" />
+    <Folder Include="IXMTIME\Dashboard\" />
+    <Folder Include="IXMTIME\LeaveManagement\" />
+    <Folder Include="IXMTIME\Policies\" />
+    <Folder Include="IXMTIME\ProcessData\" />
+    <Folder Include="IXMTIME\ReportingStructure\" />
+    <Folder Include="IXMTIME\ShiftScheduleSettings\" />
+    <Folder Include="Models\DeviceModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\geckodriver.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\IEDriverServer.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Results\Result.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Results\TestSummary.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="Resources\IXMSoft.Business.SDK.dll" />
+    <Content Include="Resources\TestData\UserImage\InvalidFileType.exe" />
+    <Content Include="Resources\TestData\UserImage\LargeFile.jpg" />
+    <Content Include="Resources\TestData\UserImage\ValidFile.jpg" />
+    <Content Include="Resources\TestData\UserImage\William.jpg" />
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Selenium.Chrome.WebDriver.76.0.0\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Chrome.WebDriver.76.0.0\build\Selenium.Chrome.WebDriver.targets'))" />
+    <Error Condition="!Exists('..\packages\MSTest.TestAdapter.2.1.0\build\net45\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.2.1.0\build\net45\MSTest.TestAdapter.props'))" />
+    <Error Condition="!Exists('..\packages\MSTest.TestAdapter.2.1.0\build\net45\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.2.1.0\build\net45\MSTest.TestAdapter.targets'))" />
+  </Target>
+  <Import Project="..\packages\Selenium.Chrome.WebDriver.76.0.0\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.76.0.0\build\Selenium.Chrome.WebDriver.targets')" />
+  <Import Project="..\packages\MSTest.TestAdapter.2.1.0\build\net45\MSTest.TestAdapter.targets" Condition="Exists('..\packages\MSTest.TestAdapter.2.1.0\build\net45\MSTest.TestAdapter.targets')" />
+</Project>

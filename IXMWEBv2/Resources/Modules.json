@@ -1,0 +1,34 @@
+﻿{
+    "Modules": [
+        {
+            "name": "Home",
+            "subtile": [
+                {
+                    "name": ""
+                }
+            ]
+        },
+        {
+            "name": "Login",
+            "subtile": [
+                {
+                    "name": ""
+                }
+            ]
+        },
+        {
+            "name": "User",
+            "subtile": [
+                {
+                    "name": "Add User"
+                },
+                {
+                    "name": "Enrollment"
+                },
+                {
+                    "name": "User Groups"
+                }
+            ]
+        }
+    ]
+}
