@@ -27,7 +27,7 @@ namespace IXMWEBv2.Utils
                 onlineDeviceInfo = GetDeviceDetailsFromDB(DriverManager.onlineDeviceIP);
                 DriverManager.onlineDeviceIP = onlineDeviceInfo.IpAddress;
                 DriverManager.onlineDeviceName = onlineDeviceInfo.DeviceName;
-                DriverManager.onlineDevicePort = onlineDeviceInfo.Port;
+                DriverManager.onlineDevicePort = Convert.ToString(onlineDeviceInfo.Port);
             }
             //if (offlineDeviceInfo == null)
             //{
@@ -77,7 +77,7 @@ namespace IXMWEBv2.Utils
                 if (dt != null && dt.Rows.Count == 1)
                 {
                     DataRow dr = dt.Rows[0];
-                    deviceInfo.Port = dr["Port"].ToString();
+                    deviceInfo.Port = Convert.ToUInt32(dr["Port"]);
                     deviceInfo.IpAddress = ipAddress;
                     deviceInfo.DeviceName = dr["Name"].ToString();
                     deviceInfo.SerialNo = dr["SerialNumber"].ToString();
@@ -128,7 +128,7 @@ namespace IXMWEBv2.Utils
                                  {
                                      DeviceName = dr["Name"].ToString(),
                                      IpAddress = dr["IPaddress"].ToString(),
-                                     Port = dr["Port"].ToString()
+                                     Port = Convert.ToUInt32(dr["Port"])
                                  }).ToList();
 
                     //foreach (DataRow item in dt.Rows)

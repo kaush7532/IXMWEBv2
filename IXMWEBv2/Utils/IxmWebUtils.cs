@@ -250,11 +250,13 @@ namespace IXMWEBv2.Utils
                 //Check for any of the model (modal or kendo) open or not. If yes then close it
 
                 var result = CloseModalWindows.Where(x => x.Displayed);
+                Logger.Info("Found ModalWindows: " + result.Count());
                 foreach (var item in result)
                 {
                     ClickElement(item);
                 }
                 var kendoresult = CloseKendoWindows.Where(x => x.Displayed);
+                Logger.Info("Found KendoWindows: " + kendoresult.Count());
                 foreach (var item in kendoresult)
                 {
                     ClickElement(item);

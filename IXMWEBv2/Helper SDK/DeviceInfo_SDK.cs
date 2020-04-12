@@ -21,6 +21,12 @@ namespace IXMWEBv2.Helper_SDK
             Initialize(DriverManager.onlineDeviceIP, DriverManager.onlineDevicePort, DeviceConnectionType.Ethernet);
         }
 
+        public DeviceInfo_SDK(string ipAddress, string port, DeviceConnectionType connectionType)
+        {
+            Logger.Info("SDK: Initializing device network connection");
+            Initialize(ipAddress, port, connectionType);
+        }
+
         /// <summary>
         /// Method to initialize network connection, configuration and deviceinfomanager class
         /// </summary>
@@ -36,19 +42,19 @@ namespace IXMWEBv2.Helper_SDK
                 nc.DeviceSettings.IPaddress = ipAddress;
                 nc.DeviceSettings.Port = port;
                 nc.DeviceSettings.ConnectionType = connectionType;
-                nc.ReceiveTimeout = 1200000;
-                nc.SendTimeout = 600000;
+                nc.ReceiveTimeout = 60000;
+                nc.SendTimeout = 60000;
 
-                Logger.Info("Starting Wait Connection");
+                Logger.Info("SDK: Starting Wait Connection");
+
+                nc.CloseConnection();
 
                 if (WaitForConnection(ipAddress, Convert.ToInt16(port), 15, 10))
                 {
                     nc.OpenConnection();
-                    Logger.Info(nc.IsOpen.ToString() + nc.DeviceSettings.Port + nc.DeviceSettings.IPaddress);
-
+                    
                     ncm = new NetworkConfigurationManager(nc);
-                    Logger.Info(ncm.RetrieveEthernetNetworkSettings().IPAddress.ToString() + ncm.RetrieveEthernetNetworkSettings().Port.ToString());
-
+                    
                     dim = new DeviceInfoManager(nc);
                     Logger.Info("SDK: Initialize success for IP: " + ipAddress + " and PORT: " + port);
                 }

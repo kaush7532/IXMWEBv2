@@ -5,14 +5,14 @@
         public const string AddNewDeviceWindowTxt = "";
         public const string AddDeviceNavigationItems = "";
         public const string AddDeviceDiscoverySection = "DiscoverySection";
-        public const string AddDeviceRegisterSection = "";
-        public const string AddDeviceSummarySection = "";
+        public const string AddDeviceRegisterSection = "registerContent";
+        public const string AddDeviceSummarySection = "SummarySection";
         public const string AddNewWindowCloseBtn = "";
 
         #region Discover
 
         #region Buttons
-        public const string AutoDiscoverRadioBtn = "//*[@id='customRadio1']//following-sibling::label[normalize-space(text()='Auto Discover')]";        
+        public const string AutoDiscoverRadioBtn = "//*[@id='customRadio1']//following-sibling::label[normalize-space(text()='Auto Discover')]";
         public const string EthernetRadioBtn = "//*[@id='customRadio2']//following-sibling::label[normalize-space(text()='Ethernet')]";
         public const string SerialRadioBtn = "//*[@id='customRadio3']//following-sibling::label[normalize-space(text()='Serial')]";
         public const string SearchBtn = "SubmitButton";
@@ -36,95 +36,62 @@
         public const string SearchSSLChkbox = "//*[@id='chkConnectionMode']//following-sibling::label[text()='Search on SSL']";
         #endregion
 
+        #region Discovered Devices
         public const string DiscoveredDevices = ".//*[@id='Devices']//div[@class[contains(.,'device-list-box')]]";
+        public const string AlreadyRegisteredDevices = "//img[@title='Registered']/preceding-sibling::ul//p";
+        public const string RegisterBtnDevList = ".//*[@id='divDiscoverDeviceListDisplay']//div[@class='device-detail']";
+        #endregion
 
         #endregion
 
         #region Register
-        
+
         #region Icon
         public const string DeviceToRegisterIcon = "";
         #endregion
-
         #region Text Boxes
-        public const string DeviceNameTxt = "";
-        public const string DeviceIdTxt = "";
-        public const string DeviceGroupTxt = "";
-        public const string DeviceIpAddrTxt = "";
-        public const string DevicePortTxt = "";
-        public const string DeviceSubnetMaskTxt = "";
-        public const string DeviceGatewayTxt = "";
+        public const string DeviceNameTxt = "Name";
+        public const string DeviceIdTxt = "DeviceId";
+        public const string DeviceGroupTxt = ".//*[@id='uglist_taglist']/following-sibling::input";
+        public const string DeviceIpAddrTxt = "ip";
+        public const string DevicePortTxt = "Port";
+        public const string DeviceSubnetMaskTxt = "subnetMask";
+        public const string DeviceGatewayTxt = "Gateway";
+        public const string DeviceGroupSelectValue = ".//*[@id='uglist_listbox']/li[text()='#VALUE (Add New)']";
         #endregion
-
         #region CheckBoxes
-        public const string TnAChkbox = "";
-        public const string DHCPChkbox = "";
+        public const string TnAChkbox = ".//*[@id='" + AddDeviceRegisterSection + "']//*[@id='" + TnAChkboxId + "']" +
+            "//following-sibling::label[normalize-space(text())='T&A Device']";
+        public const string TnAChkboxId = "TnADevice";
+        public const string DHCPChkbox = ".//*[@id='" + AddDeviceRegisterSection + "']//*[@id='" + DHCPChkboxId + "']" +
+            "//following-sibling::label[normalize-space(text())='DHCP']";
+        public const string DHCPChkboxId = "ObtainThroughDHCP";
 
         #endregion
-
         #region Buttons
-        public const string Register = "";
+        public const string RegisterBtn = ".//*[@id='" + AddDeviceRegisterSection + "']//a[contains(.,'Register')]";
+        #endregion
+        #region Dropdown
+        public const string DeviceModeDrpDownName = "DeviceMode";
+        public const string DeviceModeDrpDown = ".//*[@id='DeviceMode']//preceding-sibling::span";
         #endregion
 
         #endregion
 
         #region Summary
-        public const string NetworkInfoItems = "";
-        public const string GeneralInfoItems = "";
+        public const string NetworkInfoItems = ".//*[@id='" + AddDeviceSummarySection + "']//*[@class='card custom-card']" +
+            "//div[normalize-space(text())='Network Information']//following-sibling::div//li";
+        public const string DeviceInfoItems = ".//*[@id='" + AddDeviceSummarySection + "']//*[@class='card custom-card']" +
+            "//div[normalize-space(text())='Device Information']//following-sibling::div//li";
 
-        #region Buttons
-        public const string AddNewBtn = "";
-        public const string DoneBtn = "";
+        #region Buttons        
+        public const string AddNewBtnToContinueReg = ".//*[@id='" + AddDeviceSummarySection + "']//a[contains(.,'Add New')]";
+        public const string DoneBtn = ".//*[@id='" + AddDeviceSummarySection + "']//a[contains(.,'Done')]";
         #endregion
         #endregion
 
         #region Resource Strings
-        
+        public const string NoDeviceFoundResource = "No Device found. Try again.";
         #endregion
-
-
-
-
-
-
-        public const string AutoDiscoverSwitchName = "chkEthernet";
-        public const string SSLModeSwitchName = "chkConnectionMode";
-        
-        public const string EthernetSection = ".//*[@id='ethernet_text']/div[normalize-space(text())='Ethernet']";
-        public const string SerialSection = ".//*[@id='ethernet_text']/div[normalize-space(text())='Serial']";
-
-        /// <summary>
-        /// Search Result locators
-        /// </summary>
-        public const string RegisterBtnDevList = ".//*[@id='divDiscoverDeviceListDisplay']//div[@class='device-detail']";
-
-
-        public const string SearchResultGridDivID = "Devices";
-        //public const string DeviceType = ".//*[@id='Devices']/div[2]//td[text()='#VALUE']/parent::tr/td[2]";
-
-        /// <summary>
-        /// Device Registration Form
-        /// </summary>        
-        // predefined value
-        public const string RegistrationFormSection = "registerContent";
-        public const string SummaryFormSection = "AddSummary";
-
-        //public const string RegisterBtnDevForm = "Submit";
-        public const string RegisterBtnDevForm = ".//*[@id='"+ RegistrationFormSection + "']//a[contains(.,'Register')]";
-
-        public const string DeviceNameTxtBox = "Name";
-        public const string DeviceGroupTxtBox = ".//*[@id='uglist_taglist']/following-sibling::input";
-        public const string DeviceGroupSelectValue = ".//*[@id='uglist_listbox']/li[text()='#VALUE (Add New)']";
-        public const string DeviceGroupDropdownClick = ".//*[@id='uglist_taglist']/li/span[1]";
-        public const string IpOctet4 = "ipaddr_octet_4";
-
-        public const string OkBtn = "btnOk";
-        public const string AddNewBtnToContinueReg = ".//*[@id='"+ SummaryFormSection + "']//a[contains(.,'Add New')]";
-        //".//*[@id='partialviewNetwork1']//span[normalize-space(text())='Information']"
-
-        /// <summary>
-        /// Device Discovery locators
-        /// </summary>
-        
     }
 }

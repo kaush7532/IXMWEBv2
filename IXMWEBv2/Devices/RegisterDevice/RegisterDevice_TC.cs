@@ -15,7 +15,7 @@ namespace IXMWEBv2.Devices.RegisterDevice
     {
         private RegisterDevice_AL registerdeviceAL;
         private DeviceOperations_AL deviceListAccessLayer;
-        private Device_SDK deviceSDKSettings;
+        private GeneralInfo_SDK deviceSDKSettings;
 
         #region Initialization methods
 
@@ -45,13 +45,11 @@ namespace IXMWEBv2.Devices.RegisterDevice
         {
             try
             {
-                //get UI
+                
+                deviceListAccessLayer = new DeviceOperations_AL();
+                deviceListAccessLayer.AddDevice();
 
-                //Get DiscoverUI
-                //Get RegisterUI
-                //Get SummaryUI
-
-                Assert.IsTrue(registerdeviceAL.IsDeviceRegistrationPageUIValid());
+                Assert.IsTrue(registerdeviceAL.IsAddDeviceDiscoveryUIValid());
             }
             catch (Exception ex)
             {
@@ -61,7 +59,7 @@ namespace IXMWEBv2.Devices.RegisterDevice
             }
         }
 
-        [TestMethod]       
+        [TestMethod]
         [Ignore]
         public void BulkDeviceRegistration()
         {
@@ -97,18 +95,32 @@ namespace IXMWEBv2.Devices.RegisterDevice
         {
             try
             {
+                //Click Add Device
                 deviceListAccessLayer = new DeviceOperations_AL();
                 deviceListAccessLayer.AddDevice();
 
-                registerdeviceAL.SearchDevice(autoDiscover: true);
-                //Assert.IsTrue(IXMWebUtils.IsProgressBarShown(true),
-                //    "Fail: Progress bar not displayed while doing AutoDiscovery");
+                //Search Device with auto discover mode
+                var discoveredDevices = registerdeviceAL.SearchDevice(autoDiscover: true);
 
-                registerdeviceAL.RegisterDevice(DriverManager.deviceToRegisterIP);
-                deviceListAccessLayer = new DeviceOperations_AL();
+                var uidetails = registerdeviceAL.RegisterDevice(DriverManager.deviceToRegisterIP, discoveredDevices);
 
                 //Verify device registration on device list page.
-                Assert.IsTrue(deviceListAccessLayer.IsDeviceSuccessfullyRegistered(DriverManager.deviceToRegisterIP));
+                Assert.IsTrue(deviceListAccessLayer.IsDeviceSuccessfullyRegistered(uidetails.deviceInfo.SerialNumber));
+
+                //Db verification
+                //ToDo but already from UI below SDK verification is done
+
+
+                //SDK for verification
+                var deviceSDKSettings = new GeneralInfo_SDK();
+                var sdkdetails = deviceSDKSettings.GetDeviceGeneralInfo();
+
+                Assert.AreEqual(sdkdetails.Name, uidetails.deviceInfo.DeviceName, "Device name invalid");
+                Assert.AreEqual(sdkdetails.SerialNo, uidetails.deviceInfo.SerialNumber, "Device serial invalid");
+                Assert.AreEqual(sdkdetails.FwVersion, uidetails.deviceInfo.FirmwareVersion, "Device firmware invalid");
+                Assert.AreEqual(sdkdetails.Mac, uidetails.networkInfo.MacID, "Device MAC invalid");
+                Assert.AreEqual(sdkdetails.IPAddress, uidetails.networkInfo.IP, "Device IP invalid");
+                
             }
             catch (Exception ex)
             {
@@ -124,18 +136,31 @@ namespace IXMWEBv2.Devices.RegisterDevice
         {
             try
             {
+                //Click Add Device
                 deviceListAccessLayer = new DeviceOperations_AL();
                 deviceListAccessLayer.AddDevice();
 
-                registerdeviceAL.SearchDevice(startIp: "192.168.1.85", port: "10004");
-                //Assert.IsTrue(IXMWebUtils.IsProgressBarShown(true),
-                //    "Fail: Progress bar not displayed while searching device in single device IP mode");
+                //Search Device with Ip Mode
+                var discoveredDevices = registerdeviceAL.SearchDevice(startIp: DriverManager.deviceToRegisterIP);
 
-                registerdeviceAL.RegisterDevice(DriverManager.deviceToRegisterIP);
-
+                var uidetails = registerdeviceAL.RegisterDevice(DriverManager.deviceToRegisterIP, discoveredDevices);
 
                 //Verify device registration on device list page.
-                Assert.IsTrue(deviceListAccessLayer.IsDeviceSuccessfullyRegistered(DriverManager.deviceToRegisterIP));
+                Assert.IsTrue(deviceListAccessLayer.IsDeviceSuccessfullyRegistered(uidetails.deviceInfo.SerialNumber));
+
+                //Db verification
+                //ToDo but already from UI below SDK verification is done
+
+
+                //SDK for verification
+                var deviceSDKSettings = new GeneralInfo_SDK();
+                var sdkdetails = deviceSDKSettings.GetDeviceGeneralInfo();
+
+                Assert.AreEqual(sdkdetails.Name, uidetails.deviceInfo.DeviceName, "Device name invalid");
+                Assert.AreEqual(sdkdetails.SerialNo, uidetails.deviceInfo.SerialNumber, "Device serial invalid");
+                Assert.AreEqual(sdkdetails.FwVersion, uidetails.deviceInfo.FirmwareVersion, "Device firmware invalid");
+                Assert.AreEqual(sdkdetails.Mac, uidetails.networkInfo.MacID, "Device MAC invalid");
+                Assert.AreEqual(sdkdetails.IPAddress, uidetails.networkInfo.IP, "Device IP invalid");
             }
             catch (Exception ex)
             {
@@ -145,24 +170,25 @@ namespace IXMWEBv2.Devices.RegisterDevice
             }
         }
 
+
+        //To Do yet
         [TestMethod]
+        [Ignore]
         [TestCategory(Module.DeviceModule), TestCategory(TestSuite.Regression), TestCategory(TestSuite.Functional)]
         public void RegisterDeviceIPModeSSL()
         {
             try
             {
                 //enabling SSL mode for device IP
-                deviceSDKSettings = new Device_SDK();
+                deviceSDKSettings = new GeneralInfo_SDK();
 
                 deviceSDKSettings.EnableSSLMode();
 
                 //searching device using ip mode with ssl
-                registerdeviceAL.SearchDevice(startIp: DriverManager.deviceToRegisterIP, ssl: true);
-                Assert.IsTrue(IXMWebUtils.IsProgressBarShown(true, CommonLocators.IXMLoader),
-                    "Fail: Progress bar not displayed while searching device in SSL device IP mode");
+                var discoveredDevices = registerdeviceAL.SearchDevice(startIp: DriverManager.deviceToRegisterIP, ssl: true);
 
                 //registering discovered device
-                registerdeviceAL.RegisterDevice(DriverManager.deviceToRegisterIP);
+                registerdeviceAL.RegisterDevice(DriverManager.deviceToRegisterIP, discoveredDevices);
                 deviceListAccessLayer = new DeviceOperations_AL();
 
                 //Verify device registration on device list page.
@@ -187,20 +213,38 @@ namespace IXMWEBv2.Devices.RegisterDevice
             string changedPort = "1265";
             try
             {
-                deviceSDKSettings = new Device_SDK();
+                //SDK for verification
+                var deviceSDKSettings = new GeneralInfo_SDK();
 
                 deviceSDKSettings.ChangeDevicePort(changedPort);
 
-                registerdeviceAL.SearchDevice(startIp: DriverManager.deviceToRegisterIP, port: changedPort);
-                Assert.IsTrue(IXMWebUtils.IsProgressBarShown(true, CommonLocators.IXMLoader),
-                    "Fail: Progress bar not displayed while searching device in single device IP mode");
-
-                registerdeviceAL.RegisterDevice(DriverManager.deviceToRegisterIP);
-
+                //Click Add Device
                 deviceListAccessLayer = new DeviceOperations_AL();
+                deviceListAccessLayer.AddDevice();
+
+                //Search Device with Ip Mode with changed port
+                var discoveredDevices = registerdeviceAL.SearchDevice(startIp: DriverManager.deviceToRegisterIP, port: changedPort);
+
+                var uidetails = registerdeviceAL.RegisterDevice(DriverManager.deviceToRegisterIP, discoveredDevices);
 
                 //Verify device registration on device list page.
-                Assert.IsTrue(deviceListAccessLayer.IsDeviceSuccessfullyRegistered(DriverManager.deviceToRegisterIP));
+                Assert.IsTrue(deviceListAccessLayer.IsDeviceSuccessfullyRegistered(uidetails.deviceInfo.SerialNumber));
+
+                deviceSDKSettings = new GeneralInfo_SDK(DriverManager.deviceToRegisterIP, changedPort, IXMSoft.Business.SDK.Data.DeviceConnectionType.Ethernet);
+
+
+                var sdkdetails = deviceSDKSettings.GetDeviceGeneralInfo();
+
+                //Db verification                
+                //UI doesn't have port so verifying sdk and db for port.
+                var deviceDBInfo = dbInteraction.GetDeviceDetailsFromDB(DriverManager.deviceToRegisterIP);
+                Assert.AreEqual(sdkdetails.Port, deviceDBInfo.Port);
+
+                Assert.AreEqual(sdkdetails.Name, uidetails.deviceInfo.DeviceName, "Device name invalid");
+                Assert.AreEqual(sdkdetails.SerialNo, uidetails.deviceInfo.SerialNumber, "Device serial invalid");
+                Assert.AreEqual(sdkdetails.FwVersion, uidetails.deviceInfo.FirmwareVersion, "Device firmware invalid");
+                Assert.AreEqual(sdkdetails.Mac, uidetails.networkInfo.MacID, "Device MAC invalid");
+                Assert.AreEqual(sdkdetails.IPAddress, uidetails.networkInfo.IP, "Device IP invalid");
             }
             catch (Exception ex)
             {
@@ -210,6 +254,7 @@ namespace IXMWEBv2.Devices.RegisterDevice
             }
             finally
             {
+                deviceSDKSettings = new GeneralInfo_SDK(DriverManager.deviceToRegisterIP, changedPort, IXMSoft.Business.SDK.Data.DeviceConnectionType.Ethernet);
                 deviceSDKSettings.ChangeDevicePort(DriverManager.deviceToRegisterPort);
                 Logger.Info("Reverted PORT number back to " + DriverManager.deviceToRegisterPort + " from " + changedPort + " using SDK");
             }
@@ -221,17 +266,30 @@ namespace IXMWEBv2.Devices.RegisterDevice
         {
             try
             {
+                //Click Add Device
                 deviceListAccessLayer = new DeviceOperations_AL();
                 deviceListAccessLayer.AddDevice();
 
-                registerdeviceAL.SearchDevice(startIp: "192.168.1.222", endIp: "192.168.1.255");
-                Assert.IsTrue(IXMWebUtils.IsProgressBarShown(true, CommonLocators.IXMLoader),
-                    "Fail: Progress bar not displayed while searching device in range mode");
+                var discoveredDevices = registerdeviceAL.SearchDevice(startIp: "192.168.138.2", endIp: "192.168.138.4");
 
-                registerdeviceAL.BulkRegisterDevice();
+                var allRegisteredDevices = registerdeviceAL.BulkRegisterDevice();
 
                 //Verify device registration on device list page.
-                Assert.IsTrue(deviceListAccessLayer.IsDeviceSuccessfullyRegistered(DriverManager.deviceToRegisterIP));
+                foreach (var uidetails in allRegisteredDevices)
+                {
+                    Assert.IsTrue(deviceListAccessLayer.IsDeviceSuccessfullyRegistered(uidetails.deviceInfo.SerialNumber));
+                    deviceSDKSettings = new GeneralInfo_SDK(uidetails.networkInfo.IP, "9734", IXMSoft.Business.SDK.Data.DeviceConnectionType.Ethernet);
+                    var sdkdetails = deviceSDKSettings.GetDeviceGeneralInfo();
+
+                    //Db verification                
+
+                    //SDK verification
+                    Assert.AreEqual(sdkdetails.Name, uidetails.deviceInfo.DeviceName, "Device name invalid");
+                    Assert.AreEqual(sdkdetails.SerialNo, uidetails.deviceInfo.SerialNumber, "Device serial invalid");
+                    Assert.AreEqual(sdkdetails.FwVersion, uidetails.deviceInfo.FirmwareVersion, "Device firmware invalid");
+                    Assert.AreEqual(sdkdetails.Mac, uidetails.networkInfo.MacID, "Device MAC invalid");
+                    Assert.AreEqual(sdkdetails.IPAddress, uidetails.networkInfo.IP, "Device IP invalid");
+                }
             }
             catch (Exception ex)
             {
@@ -246,7 +304,7 @@ namespace IXMWEBv2.Devices.RegisterDevice
 
         [TestCleanup]
         public void Cleanup()
-        {
+        {            
             base.TearDown();
         }
 

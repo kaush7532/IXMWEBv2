@@ -28,6 +28,15 @@ namespace IXMWEBv2.Devices.RegisterDevice
         public bool IsAddDeviceDiscoveryUIValid()
         {
             bool result = false;
+            try
+            {
+                result = registerDevicePO.IsDeviceDiscoveryPageValid();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Invalid UI for device discovery page");
+                throw;
+            }
             return result;
         }
         public bool IsAddDeviceRegisterUIValid()
@@ -41,24 +50,6 @@ namespace IXMWEBv2.Devices.RegisterDevice
             return result;
         }
 
-
-        /// <summary>
-        /// Method to validate UI elements of Discover device page
-        /// </summary>
-        /// <returns>true if UI is valid else false</returns>
-        public bool IsDeviceRegistrationPageUIValid()
-        {
-            try
-            {
-                return registerDevicePO.IsDeviceRegistrationPageValid();
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "Invalid UI for device discovery page");
-                throw;
-            }
-        }
-
         /// <summary>
         /// Method to Search device using different modes of network
         /// </summary>
@@ -67,41 +58,48 @@ namespace IXMWEBv2.Devices.RegisterDevice
         /// <param name="endIp">end IP value</param>
         /// <param name="port">port value</param>
         /// <param name="ssl">true if want to enable ssl mode</param>
-        public void SearchDevice(bool autoDiscover = false, string startIp = null, string endIp = null, string port = null, bool ssl = false)
+        public List<DiscoveredDevicesUI> SearchDevice(bool autoDiscover = false, string startIp = null, string endIp = null, string port = null, bool ssl = false)
         {
             try
             {
-                //Autodiscover
-                if (autoDiscover)
+                if (IsAddDeviceDiscoveryUIValid())
                 {
-                    Logger.Info("Search device by auto discover mode");
-                    //Enable auto discover
-                    registerDevicePO.SelectAutoDiscoverOption();
-                    //IXMWebUtils.IsProgressBarShown(false, CommonLocators.IXMLoader);
-                }
+                    //Autodiscover
+                    if (autoDiscover)
+                    {
+                        Logger.Info("Search device by auto discover mode");
+                        registerDevicePO.SelectAutoDiscoverOption();
+                    }
 
-                //single ip mode
-                if (!String.IsNullOrEmpty(startIp) && String.IsNullOrEmpty(endIp))
-                {
-                    Logger.Info("Search device by single IP discover mode");
-                    registerDevicePO.EnterIpPortAddress(startIp, port: port);
-                    registerDevicePO.ClickSearchBtn();
+                    //single ip mode
+                    if (!string.IsNullOrEmpty(startIp) && string.IsNullOrEmpty(endIp))
+                    {
+                        Logger.Info("Search device by single IP discover mode");
+                        registerDevicePO.EnterIpPortAddress(startIp, port: port);
+                        registerDevicePO.ClickSearchBtn();
+                    }
+                    //range mode
+                    else if (!string.IsNullOrEmpty(startIp) && !string.IsNullOrEmpty(endIp))
+                    {
+                        Logger.Info("Search device by start IP and end IP range discover mode");
+                        registerDevicePO.EnterIpPortAddress(startIp, endIp: endIp, port: port);
+                        registerDevicePO.ClickSearchBtn();
+                    }
+                    if (ssl)
+                    {
+                        Logger.Info("Search device by SSL discover mode");
+                        registerDevicePO.SelectSSLModeDiscoveryOption();
+                        registerDevicePO.ClickSearchBtn();
+                    }
+                    Logger.Info("Search device successful", Module.DeviceModule);
                 }
-                //range mode
-                else if (!String.IsNullOrEmpty(startIp) && !String.IsNullOrEmpty(endIp))
+                else
                 {
-                    Logger.Info("Search device by start IP and end IP range discover mode");
-                    registerDevicePO.EnterIpPortAddress(startIp, endIp: endIp, port: port);
-                    registerDevicePO.ClickSearchBtn();
+                    throw new Exception("Failed to Search device. Device Discover UI not valid");
                 }
-                if (ssl)
-                {
-                    Logger.Info("Search device by SSL discover mode");
-                    registerDevicePO.SelectSSLModeDiscoveryOption();
-                    registerDevicePO.ClickSearchBtn();
-                }
-                Logger.Info("Search device successful", Module.DeviceModule);
-
+                Assert.IsTrue(IXMWebUtils.IsProgressBarShown(true, CommonLocators.IXMLoader),
+                    "Fail: Progress bar not displayed while doing discovery");
+                return registerDevicePO.GetDiscoveredDevicesList();
             }
             catch (Exception ex)
             {
@@ -115,27 +113,28 @@ namespace IXMWEBv2.Devices.RegisterDevice
         /// Method to register device.
         /// </summary>
         /// <param name="deviceNameOrIPValue">unique device name/ip/serial value to register</param>
-        public DeviceOperations_PO RegisterDevice(string deviceNameOrIPValue)
+        public RegisteredDeviceSummaryUI RegisterDevice(string deviceNameOrIPValue, List<DiscoveredDevicesUI> discoveredDevicesUI)
         {
             try
             {
                 if (registerDevicePO.IsSearchSuccessfull())
                 {
-                    var discoveredDevices = registerDevicePO.GetDiscoveredDevicesList();
-
-                    var deviceToRegister = discoveredDevices.Where(x => x.DeviceIpAddress.Equals(deviceNameOrIPValue) || x.DeviceName.Equals(deviceNameOrIPValue)).FirstOrDefault();
+                    var deviceToRegister = discoveredDevicesUI.Where(x => x.DeviceIpAddress.Equals(deviceNameOrIPValue) || x.DeviceName.Equals(deviceNameOrIPValue)).FirstOrDefault();
 
                     if (!deviceToRegister.IsAlreadyRegistered)
                     {
                         registerDevicePO.ClickRegisterOnSearchedDevicePg(deviceToRegister);
 
                         //Enter device name and device group name
-                        registerDevicePO.SetDeviceName(deviceNameOrIPValue);
-                        registerDevicePO.SetDeviceGroupName("Simulator");
+                        if (registerDevicePO.IsDeviceRegisterPageValid())
+                        {
+                            registerDevicePO.SetDeviceName(deviceNameOrIPValue + deviceToRegister.DeviceSerial);
+                            registerDevicePO.SetDeviceGroupName();
 
-                        //Click register button and wait for progress bar to disappear
-                        registerDevicePO.ClickRegisterOnDeviceRegForm();
-                        Assert.IsTrue(IXMWebUtils.IsProgressBarShown(true, CommonLocators.IXMLoader), "Fail: Progress bar not shown on register device");
+                            //Click register button and wait for progress bar to disappear
+                            registerDevicePO.ClickRegisterOnDeviceRegForm();
+                            Assert.IsTrue(IXMWebUtils.IsProgressBarShown(true, CommonLocators.IXMLoader), "Fail: Progress bar not shown on register device");
+                        }
                     }
                     else
                     {
@@ -153,7 +152,7 @@ namespace IXMWEBv2.Devices.RegisterDevice
                 Logger.Error(ex, "Click Register device button fails");
                 throw;
             }
-            return registerDevicePO.CloseDeviceRegisteredPopup();
+            return registerDevicePO.CompleteDeviceRegisteredPopup();
         }
 
 
@@ -175,13 +174,13 @@ namespace IXMWEBv2.Devices.RegisterDevice
         /// Method to register device.
         /// </summary>
         /// <param name="deviceNameOrIPValue">unique device name/ip/serial value to register</param>
-        public void BulkRegisterDevice(string deviceNamePattern = null, string changeDeviceName = null, string deviceGrpName = null)
+        public List<RegisteredDeviceSummaryUI> BulkRegisterDevice(string deviceNamePattern = null, string changeDeviceName = null, string deviceGrpName = null)
         {
+            List<RegisteredDeviceSummaryUI> listOfRegisteredDevices = new List<RegisteredDeviceSummaryUI>();
             try
             {
                 if (registerDevicePO.IsSearchSuccessfull())
                 {
-
                     var currentPageDevices = registerDevicePO.GetDiscoveredDevicesList();
                     if (!string.IsNullOrEmpty(deviceNamePattern))
                     {
@@ -195,15 +194,19 @@ namespace IXMWEBv2.Devices.RegisterDevice
                         {
                             registerDevicePO.ClickRegisterOnSearchedDevicePg(device);
 
-                            registerDevicePO.SetDeviceName();
+                            //Enter device name and device group name
+                            if (registerDevicePO.IsDeviceRegisterPageValid())
+                            {
+                                registerDevicePO.SetDeviceName();
 
-                            registerDevicePO.SetDeviceGroupName(deviceGrpName);                            
+                                registerDevicePO.SetDeviceGroupName(deviceGrpName);
 
-                            registerDevicePO.ClickRegisterOnDeviceRegForm();
-
-                            Assert.IsTrue(IXMWebUtils.IsProgressBarShown(true, CommonLocators.IXMLoader), "Fail: Progress bar not shown on register device");
-
-                            registerDevicePO.ClickAddNewToContinueRegistration();
+                                //Click register button and wait for progress bar to disappear
+                                registerDevicePO.ClickRegisterOnDeviceRegForm(true);
+                                Assert.IsTrue(IXMWebUtils.IsProgressBarShown(true, CommonLocators.IXMLoader), "Fail: Progress bar not shown on register device");
+                            }
+                            var continueRegistration = registerDevicePO.ClickAddNewToContinueRegistration();
+                            listOfRegisteredDevices.Add(continueRegistration);
 
                             Thread.Sleep(3000);
                         }
@@ -225,6 +228,7 @@ namespace IXMWEBv2.Devices.RegisterDevice
                 Logger.Error(ex, "Click Register device button fails");
                 throw;
             }
+            return listOfRegisteredDevices;
         }
     }
 }

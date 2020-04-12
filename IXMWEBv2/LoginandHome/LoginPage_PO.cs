@@ -23,7 +23,7 @@ namespace IXMWEBv2.PageObjects
         [FindsBy(How = How.Id, Using = LoginPageLocators.PasswordTxt)]
         private IWebElement PasswordTxt { get; set; }
 
-        [FindsBy(How = How.Id, Using = LoginPageLocators.SignInBtn)]
+        [FindsBy(How = How.XPath, Using = LoginPageLocators.SignInBtn)]
         private IWebElement SignInBtn { get; set; }
 
         [FindsBy(How = How.LinkText, Using = LoginPageLocators.ForgotPasswordLink)]

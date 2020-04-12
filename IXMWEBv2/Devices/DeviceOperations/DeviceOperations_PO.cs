@@ -123,10 +123,12 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
         public bool IsDevicePageLoaded()
         {
             bool flag = false;
-            int waitTime = 7;
+            int waitTime = 10;
             try
             {
-                Thread.Sleep(3000);
+                //after registration issue with loading list and overiew need to keep sleep
+                Thread.Sleep(2000);
+
                 List<IWebElement> eleList = new List<IWebElement>
                 {
                     DeviceGroupsListLink,
@@ -142,8 +144,7 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
                 };
 
                 flag = AreElementsPresent(eleList, waitTime);
-
-
+                
                 Logger.Info("Validating Device Tab loading and UI");
                 if (flag)
                 {
@@ -336,7 +337,6 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
             List<DeviceListModel> list = new List<DeviceListModel>();
             try
             {
-
                 foreach (var item in DeviceListItems)
                 {
                     var arr = item.Text.Split(Environment.NewLine.ToArray(), StringSplitOptions.RemoveEmptyEntries);

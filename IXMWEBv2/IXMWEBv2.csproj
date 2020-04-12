@@ -90,6 +90,7 @@
     <Compile Include="Devices\RegisterDevice\RegisterDevice_TC.cs" />
     <Compile Include="Employees\EmployeeOperations\AddEnrollEmployee\AddEmployee_AL.cs" />
     <Compile Include="Employees\EmployeeList\EmployeeAllAccessLayer.cs" />
+    <Compile Include="Helper SDK\Device\GeneralInfo_SDK.cs" />
     <Compile Include="LoginandHome\HomeAccessLayer.cs" />
     <Compile Include="LoginandHome\LoginAccessLayer.cs" />
     <Compile Include="QuickNavigationPane\Logs\ApplicationLogs\ApplicationLogsLocators.cs" />
@@ -98,7 +99,6 @@
     <Compile Include="Constants\TestSuite.cs" />
     <Compile Include="Helper SDK\CommunicationSDK.cs" />
     <Compile Include="Helper SDK\DeviceInfo_SDK.cs" />
-    <Compile Include="Helper SDK\Device\Device_SDK.cs" />
     <Compile Include="Models\DBModels\ApplicationLogInfo.cs" />
     <Compile Include="Models\DBModels\DeviceInfo.cs" />
     <Compile Include="Models\DBModels\EmployeeInfo.cs" />

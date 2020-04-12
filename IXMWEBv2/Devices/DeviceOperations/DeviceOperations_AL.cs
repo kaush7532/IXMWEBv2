@@ -93,7 +93,7 @@ namespace IXMWEBv2.AccessLayer.DeviceAccessLayers
         public bool IsDeviceListPageUIValid()
         {
             try
-            {
+            {                
                 return deviceOperationPO.IsDevicePageLoaded();
             }
             catch (Exception ex)
@@ -103,19 +103,24 @@ namespace IXMWEBv2.AccessLayer.DeviceAccessLayers
             }
         }
 
-        public bool IsDeviceSuccessfullyRegistered(string deviceToRegisterIp)
+        public bool IsDeviceSuccessfullyRegistered(string deviceSerialNo)
         {
             bool result = false;
             try
             {
-                var list = deviceOperationPO.GetDeviceListDetails();
-                result = list.Any(x => x.DeviceIp.Equals(deviceToRegisterIp));
+                //IXMWebUtils.IsProgressBarShown(true, CommonLocators.IXMLoader);
+                if (IsDeviceListPageUIValid())
+                {
+                    var list = deviceOperationPO.GetDeviceListDetails();
+                    result = list.Any(x => x.DeviceSerial.Equals(deviceSerialNo, StringComparison.OrdinalIgnoreCase));
+                }
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, "Failed to check if device is successfully registered or not");
                 throw;
             }
+            Logger.Info("Device Registration for serial: " + deviceSerialNo + " " + result);
             return result;
         }
 

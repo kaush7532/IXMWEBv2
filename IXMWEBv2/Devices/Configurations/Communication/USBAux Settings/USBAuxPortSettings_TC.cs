@@ -74,6 +74,8 @@ namespace IXMWEBv2.Devices.Configurations.Communication.USBAuxSettings
 
                 //Verify
                 Assert.AreEqual(uiUSBAuxPort.USBAuxPortStatus, sdkGetUsbAuxPort, "USB Aux Port status failed");
+
+                Assert.AreEqual(CommunicationResourceStrings.USBAuxStoreMsg, uiUSBAuxPort.USBAuxPortSettingsStatusTxtValue);
             }
             catch (Exception ex)
             {
