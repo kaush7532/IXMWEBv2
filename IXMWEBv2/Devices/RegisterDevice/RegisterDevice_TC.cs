@@ -30,9 +30,10 @@ namespace IXMWEBv2.Devices.RegisterDevice
             base.Setup();
 
             loginAccessLayer.LoginIXMWeb();
+            dbInteraction.DeleteDeviceFromDb(DriverManager.deviceToRegisterIP);
             ixmUtils.GoToTab(MainTabs.Devices);
             registerdeviceAL = new RegisterDevice_AL();
-            dbInteraction.DeleteDeviceFromDb(DriverManager.deviceToRegisterIP);
+            
         }
 
         #endregion Initialization methods
