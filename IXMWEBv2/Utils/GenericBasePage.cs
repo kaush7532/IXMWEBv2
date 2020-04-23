@@ -465,8 +465,8 @@ namespace IXMWEBv2.Utils
 
                     titlebar = browserOuterHight - browserInnerHight;
 
-                    String execScript = "return document.documentElement.scrollHeight>document.documentElement.clientHeight;";
-                    Boolean isScrollBarPresent = Boolean.Parse((((IJavaScriptExecutor)_driver).ExecuteScript(execScript)).ToString());
+                    string execScript = "return document.documentElement.scrollHeight>document.documentElement.clientHeight;";
+                    bool isScrollBarPresent = bool.Parse((((IJavaScriptExecutor)_driver).ExecuteScript(execScript)).ToString());
 
                     if (isScrollBarPresent == true)
                     {

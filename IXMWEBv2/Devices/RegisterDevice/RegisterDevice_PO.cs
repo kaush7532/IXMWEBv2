@@ -603,7 +603,7 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
         public bool IsDeviceSummaryPageValid()
         {
             bool flag = false;
-            int waitTime = 10;
+            int waitTime = 15;
             try
             {
                 List<IWebElement> eleList = new List<IWebElement>

@@ -50,7 +50,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.DTMFSettings
         #region Set DTMF Test Case
 
         [TestMethod]
-        [TestCategory(Module.DTMFModule), TestCategory(TestSuite.Regression), TestCategory(TestSuite.Functional)]
+        [TestCategory(Module.DTMFModule), TestCategory(Module.DeviceConfiguration), TestCategory(TestSuite.Regression), TestCategory(TestSuite.Functional)]
         public void SetDTMFSettings()
         {
             try
@@ -85,7 +85,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.DTMFSettings
         #region Reset DTMF Test Case
 
         [TestMethod]
-        [TestCategory(Module.DTMFModule), TestCategory(TestSuite.Regression), TestCategory(TestSuite.Functional)]
+        [TestCategory(Module.DTMFModule), TestCategory(Module.DeviceConfiguration), TestCategory(TestSuite.Regression), TestCategory(TestSuite.Functional)]
         public void ResetDTMFSettings()
         //Test to reset DTMF settings
         {
@@ -139,7 +139,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.DTMFSettings
         #region Set invalid value in door open code
 
         [TestMethod]
-        [TestCategory(Module.DTMFModule), TestCategory(TestSuite.Regression), TestCategory(TestSuite.Negative)]
+        [TestCategory(Module.DTMFModule), TestCategory(Module.DeviceConfiguration), TestCategory(TestSuite.Regression), TestCategory(TestSuite.Negative)]
         public void SetInvalidDoorOpenCode()
         //Test to Pass nagative value in door open code
         {
@@ -168,6 +168,11 @@ namespace IXMWEBv2.Devices.Configurations.Communication.DTMFSettings
             }
         }
 
+
+
+        #endregion Set invalid value in door open code
+
+        #endregion Testcase Methods
         #region Test Cleanup procedure
 
         [TestCleanup]
@@ -178,7 +183,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.DTMFSettings
             {
                 dtmfSDK.ResetDTMFSettings();
             }
-            
+
         }
 
         [ClassCleanup]
@@ -188,9 +193,5 @@ namespace IXMWEBv2.Devices.Configurations.Communication.DTMFSettings
         }
 
         #endregion Test Cleanup procedure
-
-        #endregion Set invalid value in door open code
-
-        #endregion Testcase Methods
     }
 }

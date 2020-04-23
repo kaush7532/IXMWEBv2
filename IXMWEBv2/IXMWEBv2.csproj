@@ -74,6 +74,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dashboard\EnrollmentStatus\EnrollmentStatusLocators.cs" />
+    <Compile Include="Devices\Configurations\Communication\Bluetooth Settings\BluetoothSettingsLocator.cs" />
+    <Compile Include="Devices\Configurations\Communication\Bluetooth Settings\BluetoothSettings_AL.cs" />
+    <Compile Include="Devices\Configurations\Communication\Bluetooth Settings\BluetoothSettings_PO.cs" />
+    <Compile Include="Devices\Configurations\Communication\Bluetooth Settings\BluetoothSettings_TC.cs" />
     <Compile Include="Devices\Configurations\Communication\CommunicationResourceStrings.cs" />
     <Compile Include="Devices\Configurations\Communication\DTMF Settings\DTMFSettings_AL.cs" />
     <Compile Include="Devices\Configurations\Communication\USBAux Settings\USBAuxPortLocator.cs" />

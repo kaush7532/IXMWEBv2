@@ -28,9 +28,9 @@ namespace IXMWEBv2.Devices.RegisterDevice
         public override void Setup()
         {
             base.Setup();
-
-            loginAccessLayer.LoginIXMWeb();
             dbInteraction.DeleteDeviceFromDb(DriverManager.deviceToRegisterIP);
+            loginAccessLayer.LoginIXMWeb();
+            
             ixmUtils.GoToTab(MainTabs.Devices);
             registerdeviceAL = new RegisterDevice_AL();
             
@@ -113,7 +113,7 @@ namespace IXMWEBv2.Devices.RegisterDevice
 
 
                 //SDK for verification
-                var deviceSDKSettings = new GeneralInfo_SDK();
+                var deviceSDKSettings = new GeneralInfo_SDK(DriverManager.deviceToRegisterIP, DriverManager.deviceToRegisterPort, IXMSoft.Business.SDK.Data.DeviceConnectionType.Ethernet);
                 var sdkdetails = deviceSDKSettings.GetDeviceGeneralInfo();
 
                 Assert.AreEqual(sdkdetails.Name, uidetails.deviceInfo.DeviceName, "Device name invalid");
@@ -152,15 +152,15 @@ namespace IXMWEBv2.Devices.RegisterDevice
                 //Db verification
                 //ToDo but already from UI below SDK verification is done
 
-
                 //SDK for verification
-                var deviceSDKSettings = new GeneralInfo_SDK();
+                var deviceSDKSettings = new GeneralInfo_SDK(DriverManager.deviceToRegisterIP, DriverManager.deviceToRegisterPort, IXMSoft.Business.SDK.Data.DeviceConnectionType.Ethernet);
                 var sdkdetails = deviceSDKSettings.GetDeviceGeneralInfo();
 
                 Assert.AreEqual(sdkdetails.Name, uidetails.deviceInfo.DeviceName, "Device name invalid");
                 Assert.AreEqual(sdkdetails.SerialNo, uidetails.deviceInfo.SerialNumber, "Device serial invalid");
                 Assert.AreEqual(sdkdetails.FwVersion, uidetails.deviceInfo.FirmwareVersion, "Device firmware invalid");
-                Assert.AreEqual(sdkdetails.Mac, uidetails.networkInfo.MacID, "Device MAC invalid");
+                string mac = sdkdetails.Mac == null ? sdkdetails.WiFiMac : sdkdetails.Mac;
+                Assert.AreEqual(mac, uidetails.networkInfo.MacID, "Device MAC invalid");
                 Assert.AreEqual(sdkdetails.IPAddress, uidetails.networkInfo.IP, "Device IP invalid");
             }
             catch (Exception ex)

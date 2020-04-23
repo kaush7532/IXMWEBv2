@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings;
 using IXMWEBv2.Devices.Configurations.Communication.DTMFSettings;
 using IXMWEBv2.Devices.Configurations.Communication.USBAuxSettings;
 using IXMWEBv2.Resources.Locators.Config.Communication;
@@ -23,6 +25,42 @@ namespace IXMWEBv2.Devices.Configurations.Communication
 
         [FindsBy(How = How.XPath, Using = CommunicationTabLocators.USBAuxPortSettingsConfig)]
         private IWebElement USBAuxPortSettingsConfig { get; set; }
+
+        [FindsBy(How = How.XPath, Using = CommunicationTabLocators.BluetoothSettingsConfig)]
+        private IWebElement BluetoothSettingsConfigExpand { get; set; }
+
+        /// <summary>
+        /// Method Expands Bluetooth settings section
+        /// </summary>
+        public void ShowBluetoothSettings(bool closeSettings=false)
+        {
+            try
+            {
+                Thread.Sleep(500);
+                WaitForElementPresent(BluetoothSettingsConfigExpand);
+                //wait for Bluetooth setting to expand
+                if (IsConfigurationExpanded(BluetoothSettingsLocator.BluetoothBodySection))
+                {
+                    Logger.Info("Bluetooth settings is already expanded");
+                    if (closeSettings)
+                    {
+                        ClickElement(BluetoothSettingsConfigExpand);
+                        Logger.Info("Closing BluetoothSettings.");
+                    }
+                }
+                else if(!closeSettings)
+                {
+                    ClickElement(BluetoothSettingsConfigExpand);
+                    Logger.Info("Expanded BluetoothSettings.");
+                }
+                Thread.Sleep(500);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Expand Bluetooth settings FAILED");
+                throw new Exception("Expand Blueooth settings FAILED");
+            }
+        }
 
         /// <summary>
         /// Method Expands DTMF settings section
@@ -49,7 +87,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication
                 throw;
             }
         }
-
 
         /// <summary>
         /// Method Expands USB Auxiliary Port settings section
@@ -83,7 +120,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication
         /// </summary>
         /// <param name="idOfConfigBody">div tag having id of config body</param>
         /// <returns>true if expanded else false</returns>
-        public bool IsConfigurationExpanded(string idOfConfigBody)
+        private bool IsConfigurationExpanded(string idOfConfigBody)
         {
             bool result = false;
             var eles = _driver.FindElements(By.XPath(CommunicationTabLocators.ExpandedConfig));

@@ -47,7 +47,7 @@ namespace IXMWEBv2.Helper_SDK
 
                 Logger.Info("SDK: Starting Wait Connection");
 
-                nc.CloseConnection();
+                
 
                 if (WaitForConnection(ipAddress, Convert.ToInt16(port), 15, 10))
                 {

@@ -21,5 +21,12 @@ namespace IXMWEBv2.Devices.Configurations.Communication
         public const string USBAuxRestoredMsg = "USB Aux settings restored";
         public const string USBAuxStoreMsg = "USB Aux settings saved";
         #endregion
+
+        #region Bluetooth: Resource Strings
+        public const string BluetoothSearchMsg = "Searching for Devices";
+        public const string BluetoothDisabledMsg = "Connection disabled";
+        public const string BluetoothRestoredMsg = "This will permanently reset Bluetooth status";
+        public const string BluetoothRestoredStatusMsg = "Status restored";
+        #endregion
     }
 }

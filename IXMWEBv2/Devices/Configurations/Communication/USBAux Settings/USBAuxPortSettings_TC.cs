@@ -41,7 +41,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.USBAuxSettings
         #endregion Initialization methods
 
         [TestMethod]
-        [TestCategory(Module.USBAuxPortModule), TestCategory(TestSuite.UI)]
+        [TestCategory(Module.USBAuxPortModule), TestCategory(Module.DeviceConfiguration), TestCategory(TestSuite.UI)]
         public void USBAuxPortSettingUI()
         {
             try
@@ -58,7 +58,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.USBAuxSettings
         }
 
         [TestMethod]
-        [TestCategory(Module.USBAuxPortModule), TestCategory(TestSuite.Regression), TestCategory(TestSuite.Functional)]
+        [TestCategory(Module.USBAuxPortModule), TestCategory(Module.DeviceConfiguration), TestCategory(TestSuite.Regression), TestCategory(TestSuite.Functional)]
         public void EnableUSBAuxSettings()
         {
             try
@@ -86,11 +86,11 @@ namespace IXMWEBv2.Devices.Configurations.Communication.USBAuxSettings
         }
 
         [TestMethod]
-        [TestCategory(Module.USBAuxPortModule), TestCategory(TestSuite.Regression), TestCategory(TestSuite.Functional)]
+        [TestCategory(Module.USBAuxPortModule), TestCategory(Module.DeviceConfiguration), TestCategory(TestSuite.Regression), TestCategory(TestSuite.Functional)]
         public void DisableUSBAuxSettings()
         {
             try
-            {                
+            {
                 //Reset DTMF Settings Using SDK
                 Assert.IsTrue(usbportSDK.ResetUSBAuxPortSettings(), "SDK: Reset USB Aux Port settings failed");
 
@@ -112,7 +112,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.USBAuxSettings
         }
 
         [TestMethod]
-        [TestCategory(Module.USBAuxPortModule), TestCategory(TestSuite.Regression), TestCategory(TestSuite.Functional)]
+        [TestCategory(Module.USBAuxPortModule), TestCategory(Module.DeviceConfiguration), TestCategory(TestSuite.Regression), TestCategory(TestSuite.Functional)]
         public void ResetUSBAuxSettings()
         {
             try

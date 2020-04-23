@@ -174,7 +174,7 @@ namespace IXMWEBv2.Utils
         {
             try
             {
-                string query1 = "select dbid from device where ipaddress = @param1";
+                string query1 = "select dbid from device where ipaddress = @param1 or wifiipaddress= @param1";
                 using (conn = new SqlConnection(connString))
                 {
                     conn.Open();
@@ -196,7 +196,7 @@ namespace IXMWEBv2.Utils
                         db = dbid.ToString();
                     }
 
-                    if (!String.IsNullOrEmpty(db))
+                    if (!string.IsNullOrEmpty(db))
                     {
                         string query2 = "delete from DeviceUserGroupDetail where deviceid = '" + db + "'";
                         cmd.CommandText = query2;
@@ -214,7 +214,7 @@ namespace IXMWEBv2.Utils
                         cmd.CommandText = query6;
                         cmd.ExecuteNonQuery();
                         
-                        string query5 = "delete from Device where IPaddress = '" + deviceIp + "'";
+                        string query5 = "delete from Device where dbid = '" + db + "'";
                         cmd.CommandText = query5;
                         cmd.ExecuteNonQuery();
                         Logger.Info("DATABASE: Device: " + deviceIp + " deleted successfully from db");

@@ -15,6 +15,12 @@
     {
         public bool USBAuxPortStatus { get; set; }
         public string USBAuxPortSettingsStatusTxtValue { get; set; }
+    }
 
+    public class BluetoothSettingsModel : CommunicationModel
+    {
+        public bool BluetoothStatus { get; set; }
+        public string BluetoothSettingsResetTxtValue { get; set; }
+        public string BluetoothSettingsStatusTxtValue { get; set; }
     }
 }

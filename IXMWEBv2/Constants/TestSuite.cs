@@ -24,9 +24,11 @@
         public const string EnrollmentModule = "Enrollment";
         public const string LoginModule = "Login";
         public const string DeviceModule = "Device";
+        public const string DeviceConfiguration = "DeviceConfiguration";
         public const string DTMFModule = "DTMFSettings";
         public const string VOIP = "VOIP";
-        public const string USBAuxPortModule = "USBAuxiliaryPortSettings ";
+        public const string USBAuxPortModule = "USBAuxiliaryPortSettings";
+        public const string BluetoothModule = "BluetoothSettings";
         public const string HomeModule = "Home";
         public const string UserGroupModule = "UserGroup";
         public const string SmartCard = "SmartCard";

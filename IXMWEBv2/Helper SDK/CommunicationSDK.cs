@@ -2,6 +2,7 @@
 using IXMSoft.Business.SDK;
 using IXMSoft.Business.SDK.Commands;
 using IXMSoft.Business.SDK.IXMException;
+using IXMWEBv2.Constants;
 using IXMWEBv2.Utils;
 
 namespace IXMWEBv2.Helper_SDK
@@ -9,12 +10,14 @@ namespace IXMWEBv2.Helper_SDK
     public class CommunicationSDK : DeviceInfo_SDK
     {
         private VOIPConfigurationManager dtmfVoip;
-        private NetworkConfigurationManager ncm;
+        private BluetoothManager bluetooth;
+        //private NetworkConfigurationManager ncm;
 
         public CommunicationSDK()
         {
             dtmfVoip = new VOIPConfigurationManager(nc);
-            ncm = new NetworkConfigurationManager(nc);
+            bluetooth = new BluetoothManager(nc);
+            //ncm = new NetworkConfigurationManager(nc);
         }
 
         #region DTMF Methods
@@ -95,6 +98,67 @@ namespace IXMWEBv2.Helper_SDK
         }
 
         #endregion DTMF Methods
+
+        #region Bluetooth Methods
+        /// <summary>
+        /// Retrieve BluetoothStatus
+        /// </summary>
+        /// <returns></returns>
+        public bool GetBluetoothStatus()
+        {
+            var result = bluetooth.RetrieveBluetoothStatus();
+            Logger.Info("SDK: Retrieved Bluetooth Status with result " + result, "SDK");
+            return result;
+        }
+
+        /// <summary>
+        /// Method to Reset Bluetooth Status
+        /// </summary>
+        /// <returns>True if success else false</returns>
+        public bool ResetBluetoothStatus()
+        {
+            var result = bluetooth.RestoreBluetoothStatus();
+            Logger.Info("SDK: Restored Bluetooth Status with result " + result, "SDK");
+            return result;
+        }
+
+        /// <summary>
+        /// Method to Enable/Disable bluetooth
+        /// </summary>
+        /// <param name="turnON">Pass true if want to enable bluetooth
+        /// Pass FALSE if want to disable bluetooth</param>
+        public void EnableDisableBluetoothStatus(bool turnON)
+        {
+            var currentstatus = GetBluetoothStatus();
+            if (turnON)
+            {
+                if (!currentstatus)
+                {
+                    bluetooth.EnableDisableBluetoothStatus(turnON);
+                    Logger.Info("SDK: Changed Bluetooth Status to " + turnON, "SDK");
+                }
+                else
+                {
+                    Logger.Info("SDK: Bluetooth Already ON", "SDK");
+                }
+            }
+            else
+            {
+                if (!currentstatus)
+                {
+                    Logger.Info("SDK: Bluetooth Already OFF", "SDK");
+                }
+                else
+                {
+                    bluetooth.EnableDisableBluetoothStatus(turnON);
+                    Logger.Info("SDK: Changed Bluetooth Status to " + turnON, "SDK");
+                }
+            }
+            Logger.Info("After Changing Bluetooth Status: " + GetBluetoothStatus());           
+          
+        }
+
+        #endregion
 
         #region USB Aux Port Methods
 
