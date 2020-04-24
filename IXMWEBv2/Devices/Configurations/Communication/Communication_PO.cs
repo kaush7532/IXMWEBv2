@@ -4,6 +4,7 @@ using IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings;
 using IXMWEBv2.Devices.Configurations.Communication.DTMFSettings;
 using IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings;
 using IXMWEBv2.Devices.Configurations.Communication.USBAuxSettings;
+using IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings;
 using IXMWEBv2.Resources.Locators.Config.Communication;
 using IXMWEBv2.Utils;
 using OpenQA.Selenium;
@@ -32,6 +33,9 @@ namespace IXMWEBv2.Devices.Configurations.Communication
 
         [FindsBy(How = How.XPath, Using = CommunicationTabLocators.IXMWEBServerSettingsConfig)]
         private IWebElement IXMWEBServerSettingsConfigExpand { get; set; }
+
+        [FindsBy(How = How.XPath, Using = CommunicationTabLocators.WEBCloudSetttingsConfig)]
+        private IWebElement WEBCloudSetttingsConfig { get; set; }
 
         /// <summary>
         /// Method Expands Bluetooth settings section
@@ -126,6 +130,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication
             }
         }
 
+
         /// <summary>
         /// Method Expands USB Auxiliary Port settings section
         /// </summary>
@@ -154,11 +159,38 @@ namespace IXMWEBv2.Devices.Configurations.Communication
         }
 
         /// <summary>
+        /// Method Expands WEBCloud settings section
+        /// </summary>
+        public void ShowWEBCloudSettings()
+        {
+            try
+            {
+                WaitForElementPresent(WEBCloudSetttingsConfig);
+                //wait for WEBCloud setting to expand
+                if (IsConfigurationExpanded(WEBCloudLocators.WEBCloudBodySection))
+                {
+                    Logger.Info("WEBCloud settings is already expanded");
+                }
+                else
+                {
+                    ClickElement(WEBCloudSetttingsConfig);
+                    Logger.Info("Expanded WEBCloud Settings");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Expand of WEBCloud settings FAILED");
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Method to get if body under communication is expanded or not
         /// </summary>
         /// <param name="idOfConfigBody">div tag having id of config body</param>
         /// <returns>true if expanded else false</returns>
-        private bool IsConfigurationExpanded(string idOfConfigBody)
+        public bool IsConfigurationExpanded(string idOfConfigBody)
         {
             bool result = false;
             var eles = _driver.FindElements(By.XPath(CommunicationTabLocators.ExpandedConfig));

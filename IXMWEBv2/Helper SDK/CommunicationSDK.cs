@@ -2,7 +2,6 @@
 using IXMSoft.Business.SDK;
 using IXMSoft.Business.SDK.Commands;
 using IXMSoft.Business.SDK.IXMException;
-using IXMWEBv2.Constants;
 using IXMWEBv2.Utils;
 
 namespace IXMWEBv2.Helper_SDK
@@ -10,6 +9,8 @@ namespace IXMWEBv2.Helper_SDK
     public class CommunicationSDK : DeviceInfo_SDK
     {
         private VOIPConfigurationManager dtmfVoip;
+        private NetworkConfigurationManager ncm;
+        private CloudSettingsManager webCloud;
         private BluetoothManager bluetooth;
         private WebURLManager sum;
         //private NetworkConfigurationManager ncm;
@@ -17,6 +18,8 @@ namespace IXMWEBv2.Helper_SDK
         public CommunicationSDK()
         {
             dtmfVoip = new VOIPConfigurationManager(nc);
+            ncm = new NetworkConfigurationManager(nc);
+            webCloud = new CloudSettingsManager(nc);
             bluetooth = new BluetoothManager(nc);
             sum = new WebURLManager(nc);
             //ncm = new NetworkConfigurationManager(nc);
@@ -173,8 +176,8 @@ namespace IXMWEBv2.Helper_SDK
                     Logger.Info("SDK: Changed Bluetooth Status to " + turnON, "SDK");
                 }
             }
-            Logger.Info("After Changing Bluetooth Status: " + GetBluetoothStatus());           
-          
+            Logger.Info("After Changing Bluetooth Status: " + GetBluetoothStatus());
+
         }
 
         #endregion
@@ -333,5 +336,84 @@ namespace IXMWEBv2.Helper_SDK
         }
 
         #endregion VOIP Methods
+
+        #region WEBCloud Methods
+
+        /// <summary>
+        /// Get WEBCloud settings
+        /// </summary>
+        /// <returns>WEBCloud settings as ICloudSetting</returns>
+        public ICloudSettings GetWEBCloudSettings()
+        {
+            ICloudSettings c;
+            try
+            {
+                c = webCloud.RetrieveCloudSettings();
+                Logger.Info("CommunicationSDK: WEBCloud settings get SUCCESS");
+            }
+            catch (IXMSDKException ex)
+            {
+                Logger.Error(ex, "IXMSDKException: Failed to get WEBCloud settings");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "SDK: Failed to get WEBCloud settings");
+                throw;
+            }
+            return c;
+        }
+
+        /// <summary>
+        /// Reset WEBCloud Settings
+        /// </summary>
+        /// <returns>true if reset success else false</returns>
+        public bool ResetWEBCloudSettings()
+        {
+            bool result = false;
+            try
+            {
+                result = webCloud.RestoreCloudSettings();
+                if (result)
+                {
+                    Logger.Info("CommunicationSDK: WEBCloud settings reset SUCCESS");
+                }
+            }
+            catch (IXMSDKException e)
+            {
+                Logger.Error(e, "IXMSDKException: Failed to restore WEBCloud Settings");
+                throw;
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e, "SDK: Failed to restore WEBCloud Settings");
+                throw;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Set WEBCloud Settings
+        /// </summary>
+        /// <param name="status">WEBCloud parameter</param>
+        public void SetWEBCloudSettings(bool Status, string CUrl = null, int Port = 1255, bool SSlStatus = false, bool IsDefaultCert = false, string SelectedCert = null, string Password = null)
+        {
+            try
+            {
+                webCloud.StoredCloudSettings(Status, CUrl, Port, SSlStatus, IsDefaultCert, SelectedCert, Password);
+            }
+            catch (IXMSDKException e)
+            {
+                Logger.Error(e, "IXMSDKException: Failed to Set WEBCloud Settings");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "SDK: Failed to Set WEBCloud Settings");
+                throw;
+            }
+        }
+               
+        #endregion WEBCloud Methods
     }
 }

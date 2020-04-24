@@ -80,6 +80,8 @@ namespace IXMWEBv2.Devices.Configurations.Communication.USBAuxSettings
                 //click on apply button
                 usbportpo.ClickUSBAuxPortApplyBtn();
 
+                Thread.Sleep(1000);
+
                 usbportsettings.USBAuxPortSettingsStatusTxtValue = ixmwebutils.ReturnKendoTextValue();
 
                 Logger.Info("Able to Enable or Disable USB Aux Port settings: PASSED in USBAuxPortSetting_AL");

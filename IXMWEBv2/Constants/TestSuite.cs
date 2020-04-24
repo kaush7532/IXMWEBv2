@@ -30,6 +30,8 @@
         public const string VOIP = "VOIP";
         public const string USBAuxPortModule = "USBAuxiliaryPortSettings";
         public const string BluetoothModule = "BluetoothSettings";
+        
+        public const string WEBCloudModule = "WEBCloudSettings";
         public const string HomeModule = "Home";
         public const string UserGroupModule = "UserGroup";
         public const string SmartCard = "SmartCard";

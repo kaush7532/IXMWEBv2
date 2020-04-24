@@ -32,11 +32,14 @@ namespace IXMWEBv2.QuickNavigationPane.Sync
 
         #region Create SyncGroup Test Case
 
-        //[TestMethod]
+        [TestMethod]
         [TestCategory(Module.SyncModule), TestCategory(TestSuite.Regression), TestCategory(TestSuite.Functional)]
-        public void SetDTMFSettings()
+
+        public void CreateSyncGroup()
         {
             // Create Sync Group
+            syncAccessLayer.CreateSyncGroup("Emp1, Emp2", "DG1, DG2");
+            
 
         }
 

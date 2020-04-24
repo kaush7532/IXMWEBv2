@@ -89,6 +89,10 @@
     <Compile Include="Devices\Configurations\Communication\USBAux Settings\USBAuxPortSettings_PO.cs" />
     <Compile Include="Devices\Configurations\Communication\USBAux Settings\USBAuxPortSettings_TC.cs" />
     <Compile Include="Devices\Configurations\Communication\EthernetSettings\EthernetSettingsLocators.cs" />
+    <Compile Include="Devices\Configurations\Communication\WEBCloud Settings\WEBCloudLocators.cs" />
+    <Compile Include="Devices\Configurations\Communication\WEBCloud Settings\WEBCloudSettings_AL.cs" />
+    <Compile Include="Devices\Configurations\Communication\WEBCloud Settings\WEBCloudSettings_PO.cs" />
+    <Compile Include="Devices\Configurations\Communication\WEBCloud Settings\WEBCloudSettings_TC.cs" />
     <Compile Include="Devices\Configurations\Overview\OverviewTabLocators.cs" />
     <Compile Include="Devices\DeviceOperations\DeviceOperationsModel.cs" />
     <Compile Include="Devices\DeviceOperations\DeviceOperations_AL.cs" />

@@ -14,13 +14,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.DTMFSettings
             dtmfpo = new DTMFSettings_PO();
         }
 
-        /// <summary>
-        /// Method to Set DTMF Settings
-        /// </summary>
-        /// <param name="dtmfCode">dtmCode if other than 15</param>
-        /// <param name="status">dtmf setting status</param>
-        /// <param name="sendWiegandStatus">dtmf send wiegand status</param>
-        /// <returns>DTMFSettings from UI</returns>
+        
 
         public DTMFConfigModel GetDTMFSettingUI()
         {
@@ -37,6 +31,13 @@ namespace IXMWEBv2.Devices.Configurations.Communication.DTMFSettings
             return dtmfSettings;
         }
 
+        /// <summary>
+        /// Method to Set DTMF Settings
+        /// </summary>
+        /// <param name="dtmfCode">dtmCode if other than 15</param>
+        /// <param name="status">dtmf setting status</param>
+        /// <param name="sendWiegandStatus">dtmf send wiegand status</param>
+        /// <returns>DTMFSettings from UI</returns>
         public DTMFConfigModel SetDTMFSettings(string dtmfCode = null, bool status = false, bool sendWiegandStatus = false)
         {
             DTMFConfigModel dtmfSettings = new DTMFConfigModel();

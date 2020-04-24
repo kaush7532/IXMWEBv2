@@ -35,5 +35,13 @@ namespace IXMWEBv2.Devices.Configurations.Communication
         public const string IXMWEBServerInvalidURLSetMsg = "Invalid URL";
         public const string IXMWEBServerBlankURLSetMsg = "Valid IXM WEB Server URL is required";
         #endregion
+        #region WEB Cloud: Resource Strings
+
+        public const string WEBCloudRestoredMsg = "WEB Cloud settings restored";
+        public const string WEBCloudStoreMsg = "WEB Cloud settings saved";
+
+
+        #endregion WEB Cloud: Resource Strings
+
     }
 }

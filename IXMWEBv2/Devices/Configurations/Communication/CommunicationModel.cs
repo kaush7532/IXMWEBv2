@@ -24,6 +24,18 @@
         public string BluetoothSettingsStatusTxtValue { get; set; }
     }
 
+    public class WEBCloudConfigModel : CommunicationModel
+    {
+        public bool WEBCloudStatus { get; set; }
+        public string WEBCloudSettingsUrlTxtValue { get; set; }
+        public int WEBCloudPortValue { get; set; }
+        public bool WEBCloudSSlStatus { get; set; }
+        public bool WEBCloudIsDefaultCert { get; set; }
+        public string WEBCloudSelectedCertValue { get; set; }
+        public string WEBCloudPasswordTxtValue { get; set; }
+        public string WEBCloudSettingsStatusTxtValue { get; set; }
+    }
+
     public class IXMWEBServerURLModel : CommunicationModel
     {
         public string IXMWEBServerURLTxtValue { get; set; }
