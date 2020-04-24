@@ -2,6 +2,7 @@
 using System.Threading;
 using IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings;
 using IXMWEBv2.Devices.Configurations.Communication.DTMFSettings;
+using IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings;
 using IXMWEBv2.Devices.Configurations.Communication.USBAuxSettings;
 using IXMWEBv2.Resources.Locators.Config.Communication;
 using IXMWEBv2.Utils;
@@ -28,6 +29,9 @@ namespace IXMWEBv2.Devices.Configurations.Communication
 
         [FindsBy(How = How.XPath, Using = CommunicationTabLocators.BluetoothSettingsConfig)]
         private IWebElement BluetoothSettingsConfigExpand { get; set; }
+
+        [FindsBy(How = How.XPath, Using = CommunicationTabLocators.IXMWEBServerSettingsConfig)]
+        private IWebElement IXMWEBServerSettingsConfigExpand { get; set; }
 
         /// <summary>
         /// Method Expands Bluetooth settings section
@@ -59,6 +63,40 @@ namespace IXMWEBv2.Devices.Configurations.Communication
             {
                 Logger.Error(ex, "Expand Bluetooth settings FAILED");
                 throw new Exception("Expand Blueooth settings FAILED");
+            }
+        }
+
+
+        /// <summary>
+        /// Method Expands IXMWEB Server settings section
+        /// </summary>
+        public void ShowIXMWEBServerSettings(bool closeSettings = false)
+        {
+            try
+            {
+                Thread.Sleep(500);
+                WaitForElementPresent(IXMWEBServerSettingsConfigExpand);
+                //wait for IXMWEB Server setting to expand
+                if (IsConfigurationExpanded(IXMWEBServerLocator.IXMWEBServerBodySection))
+                {
+                    Logger.Info("IXMWEB Server settings is already expanded");
+                    if (closeSettings)
+                    {
+                        ClickElement(IXMWEBServerSettingsConfigExpand);
+                        Logger.Info("Closing IXMWEB Server Settings.");
+                    }
+                }
+                else if (!closeSettings)
+                {
+                    ClickElement(IXMWEBServerSettingsConfigExpand);
+                    Logger.Info("Expanded IXMWEB Server Settings.");
+                }
+                Thread.Sleep(500);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Expand IXMWEB Server settings FAILED");
+                throw new Exception("Expand IXMWEB Server settings FAILED");
             }
         }
 

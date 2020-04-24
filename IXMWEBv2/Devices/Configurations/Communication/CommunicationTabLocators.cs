@@ -1,6 +1,7 @@
 ﻿using IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings;
 using IXMWEBv2.Devices.Configurations.Communication.DTMFSettings;
 using IXMWEBv2.Devices.Configurations.Communication.EthernetSettings;
+using IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings;
 using IXMWEBv2.Devices.Configurations.Communication.USBAuxSettings;
 
 namespace IXMWEBv2.Resources.Locators.Config.Communication
@@ -15,5 +16,6 @@ namespace IXMWEBv2.Resources.Locators.Config.Communication
         public const string USBAuxPortSettingsConfig = ".//*[@id='" + communicationDiv + "']//div[normalize-space(text())='" + USBAuxPortLocator.USBAuxPortDiv + "']";
         public const string EthernetSettingsConfig = ".//*[@id='" + communicationDiv + "']//div[normalize-space(text())='" + EthernetSettingsLocators.EthernetDiv + "']";
         public const string BluetoothSettingsConfig = ".//*[@id='" + communicationDiv + "']//div[normalize-space(text())='" + BluetoothSettingsLocator.BluetoothDiv + "']";
+        public const string IXMWEBServerSettingsConfig = ".//*[@id='" + communicationDiv + "']//div[normalize-space(text())='" + IXMWEBServerLocator.IXMWEBServerDiv + "']";
     }
 }

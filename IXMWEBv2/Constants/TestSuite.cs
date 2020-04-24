@@ -26,6 +26,7 @@
         public const string DeviceModule = "Device";
         public const string DeviceConfiguration = "DeviceConfiguration";
         public const string DTMFModule = "DTMFSettings";
+        public const string IXMWEBServerURL = "IXMWEBServerSettings";
         public const string VOIP = "VOIP";
         public const string USBAuxPortModule = "USBAuxiliaryPortSettings";
         public const string BluetoothModule = "BluetoothSettings";

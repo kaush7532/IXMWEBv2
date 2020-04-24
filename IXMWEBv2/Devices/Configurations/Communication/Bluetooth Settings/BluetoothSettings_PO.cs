@@ -1,7 +1,7 @@
 ﻿using IXMWEBv2.Resources.Locators;
 using IXMWEBv2.Utils;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
+using SeleniumExtras.PageObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings
     {
         public BluetoothSettings_PO()
         {
-            PageFactory.InitElements(_driver, this);
+            PageFactory.InitElements(_driver, this);            
         }
 
         #region Declaration: Bluetooth Section
@@ -51,6 +51,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings
 
         #endregion Declaration: Bluetooth Section
 
+        #region Methods
         /// <summary>
         /// Method to validate Bluetooth Settings UI
         /// </summary>
@@ -156,7 +157,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings
         /// </summary>
         /// <returns>Model with reset message and status of bluetooth after reset</returns>
         public BluetoothSettingsModel ClickReset()
-        {
+        {            
             string msg = null;
             string resetString = null;
             try
@@ -191,7 +192,8 @@ namespace IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings
                 BluetoothStatus = IsCheckboxActive(BluetoothSettingsLocator.BluetoothSettingsSwitchChkBoxId)
             };
 
-        }
+        } 
+        #endregion
     }
 }
 

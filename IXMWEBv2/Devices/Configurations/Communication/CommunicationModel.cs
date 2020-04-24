@@ -23,4 +23,11 @@
         public string BluetoothSettingsResetTxtValue { get; set; }
         public string BluetoothSettingsStatusTxtValue { get; set; }
     }
+
+    public class IXMWEBServerURLModel : CommunicationModel
+    {
+        public string IXMWEBServerURLTxtValue { get; set; }
+        public string IXMWEBServerStatusTxtValue { get; set; }
+        public string IXMWEBServerPopupTitleValue { get; set; }
+    }
 }

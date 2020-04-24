@@ -11,14 +11,33 @@ namespace IXMWEBv2.Helper_SDK
     {
         private VOIPConfigurationManager dtmfVoip;
         private BluetoothManager bluetooth;
+        private WebURLManager sum;
         //private NetworkConfigurationManager ncm;
 
         public CommunicationSDK()
         {
             dtmfVoip = new VOIPConfigurationManager(nc);
             bluetooth = new BluetoothManager(nc);
+            sum = new WebURLManager(nc);
             //ncm = new NetworkConfigurationManager(nc);
         }
+
+        #region IXMWEB ServerURL Methods
+        public string GetIXMWEBServerURL()
+        {
+            return sum.RetrieveWEBUrl();
+        }
+
+        public void SetIXMWEBServerULR(string urlValue)
+        {
+            sum.SaveWebUrl(urlValue);
+        }
+
+        public void ResetIXMWEBServerURL()
+        {
+            sum.RestoreWebUrl();
+        }
+        #endregion
 
         #region DTMF Methods
 

@@ -28,5 +28,12 @@ namespace IXMWEBv2.Devices.Configurations.Communication
         public const string BluetoothRestoredMsg = "This will permanently reset Bluetooth status";
         public const string BluetoothRestoredStatusMsg = "Status restored";
         #endregion
+
+        #region IXMWEB Server: Resource Strings
+        public const string IXMWEBServerPopUpTitle = "IXM WEB Server";
+        public const string IXMWEBServerURLSetMsg = "Server URL saved";
+        public const string IXMWEBServerInvalidURLSetMsg = "Invalid URL";
+        public const string IXMWEBServerBlankURLSetMsg = "Valid IXM WEB Server URL is required";
+        #endregion
     }
 }
