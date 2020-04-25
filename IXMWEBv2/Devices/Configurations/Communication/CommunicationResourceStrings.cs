@@ -34,6 +34,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication
         public const string IXMWEBServerURLSetMsg = "Server URL saved";
         public const string IXMWEBServerInvalidURLSetMsg = "Invalid URL";
         public const string IXMWEBServerBlankURLSetMsg = "Valid IXM WEB Server URL is required";
+        public const string IXMWEBServerlocalhostSetMsg = "Enter server name or IP Address";
         #endregion
         #region WEB Cloud: Resource Strings
 

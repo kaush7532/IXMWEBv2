@@ -83,7 +83,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings
             Assert.AreEqual(CommunicationResourceStrings.IXMWEBServerInvalidURLSetMsg, ui.IXMWEBServerStatusTxtValue,
                 "IXMWEB server invalid URL message incorrect");
             Assert.AreEqual(CommunicationResourceStrings.IXMWEBServerPopUpTitle, ui.IXMWEBServerPopupTitleValue,
-                "Invalid title of successfully set server url popup");
+                "Invalid title of invalild url set server url popup");
 
             var sdkUrlAfterSet = ixmwebServerSDK.GetIXMWEBServerURL();
             Assert.AreEqual(sdkUrl, sdkUrlAfterSet, "IXMWEB Server invalid url set to device");
@@ -94,10 +94,21 @@ namespace IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings
             Assert.AreEqual(CommunicationResourceStrings.IXMWEBServerInvalidURLSetMsg, ui.IXMWEBServerStatusTxtValue,
                 "IXMWEB server invalid URL message incorrect");
             Assert.AreEqual(CommunicationResourceStrings.IXMWEBServerPopUpTitle, ui.IXMWEBServerPopupTitleValue,
-                "Invalid title of successfully set server url popup");
+                "Invalid title of blank set server url popup");
 
             var sdkUrlAfterBlank = ixmwebServerSDK.GetIXMWEBServerURL();
             Assert.AreEqual(sdkUrl, sdkUrlAfterBlank, "IXMWEB Server Blank url set to device");
+
+            //Set localhost value
+            ixmwebserverAccessLayer.commpo.ShowIXMWEBServerSettings(true);
+            var uilocalhost = ixmwebserverAccessLayer.SetIXMWEBServerURL("http://localhost:9108");
+            Assert.AreEqual(CommunicationResourceStrings.IXMWEBServerlocalhostSetMsg, ui.IXMWEBServerStatusTxtValue,
+                "IXMWEB server localhost URL message incorrect");
+            Assert.AreEqual(CommunicationResourceStrings.IXMWEBServerPopUpTitle, ui.IXMWEBServerPopupTitleValue,
+                "Invalid title of localhost set server url popup");
+
+            var sdkUrlAfterlocalhost = ixmwebServerSDK.GetIXMWEBServerURL();
+            Assert.AreEqual(sdkUrl, sdkUrlAfterlocalhost, "IXMWEB Server Blank url set to device");
         }
 
         #endregion
