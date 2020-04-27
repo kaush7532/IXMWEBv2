@@ -48,7 +48,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
         #region Verify WEBCloud Settings UI testcase
 
         [TestMethod]
-        [TestCategory(Module.WEBCloudModule), TestCategory(TestSuite.UI)]
+        [TestCategory(Module.WEBCloudModule), TestCategory(TestSuite.UI), TestCategory(Module.DeviceConfiguration)]
         public void WEBCloudSettingUI()
         {
             try
@@ -68,7 +68,8 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
         #region Set WEBCloud setting Test Case
 
         [TestMethod]
-        [TestCategory(Module.WEBCloudModule), TestCategory(TestSuite.Regression), TestCategory(TestSuite.Functional)]
+        [TestCategory(Module.WEBCloudModule), TestCategory(TestSuite.Regression), 
+            TestCategory(TestSuite.Functional), TestCategory(Module.DeviceConfiguration)]
         public void SetWEBCloudSettings()
         {
             try
@@ -104,7 +105,8 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
         #region Reset WEBCloud Setting Test Case
 
         [TestMethod]
-        [TestCategory(Module.WEBCloudModule), TestCategory(TestSuite.Regression), TestCategory(TestSuite.Functional)]
+        [TestCategory(Module.WEBCloudModule), TestCategory(TestSuite.Regression), 
+            TestCategory(TestSuite.Functional), TestCategory(Module.DeviceConfiguration)]
         public void ResetWEBCloudSettings()
         //Test to reset WEBCloud settings
         {
