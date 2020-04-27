@@ -1,6 +1,6 @@
-﻿using System;
-using IXMWEBv2.PageObjects.EmployeePageObject;
+﻿using IXMWEBv2.PageObjects.EmployeePageObject;
 using IXMWEBv2.Utils;
+using System;
 
 namespace IXMWEBv2.AccessLayer.EmployeeAccessLayer
 {
@@ -43,7 +43,7 @@ namespace IXMWEBv2.AccessLayer.EmployeeAccessLayer
             addEmployee.ClickAddEmployee();
             addEmployee.SetFirstName();
             userID = addEmployee.SetUserId();
-            
+
             addEmployee.IsSaveBtnVisible();
             addEmployee.ClickSaveBtn();
         }

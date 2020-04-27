@@ -2,7 +2,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -129,8 +128,6 @@ namespace IXMWEBv2.Utils
             }
         }
 
-
-
         /// <summary>
         /// Method to verify is element enabled
         /// </summary>
@@ -173,7 +170,6 @@ namespace IXMWEBv2.Utils
                 Logger.Error(ex, "Failed to get if element is checked or not: " + elementId);
                 throw;
             }
-
         }
 
         /// <summary>
@@ -392,7 +388,6 @@ namespace IXMWEBv2.Utils
             }
         }
 
-
         /// <summary>
         /// Method to wait for element disappear
         /// </summary>
@@ -566,7 +561,6 @@ namespace IXMWEBv2.Utils
             }
         }
 
-
         /// <summary>
         /// Method to scroll down to element provided
         /// </summary>
@@ -589,7 +583,6 @@ namespace IXMWEBv2.Utils
             }
         }
 
-
         public bool Scroll_Page(IWebElement webelement, int scrollPoints)
         {
             try
@@ -606,6 +599,7 @@ namespace IXMWEBv2.Utils
             }
             catch (Exception e)
             {
+                Logger.Error(e, "Failed to scroll page: genericbase");
                 //e.printStackTrace();
                 return false;
             }
@@ -666,7 +660,7 @@ namespace IXMWEBv2.Utils
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Failed to Select Item by visible text " + dropdownElement +" text"+ text);
+                Logger.Error(ex, "Failed to Select Item by visible text " + dropdownElement + " text" + text);
                 throw;
             }
         }

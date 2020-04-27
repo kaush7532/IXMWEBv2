@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IXMWEBv2.Devices.RegisterDevice
+﻿namespace IXMWEBv2.Devices.RegisterDevice
 {
     public class DiscoveredDevicesUI
     {
@@ -14,12 +8,13 @@ namespace IXMWEBv2.Devices.RegisterDevice
         public bool IsAlreadyRegistered { get; set; }
         public string DeviceIpAddress { get; set; }
     }
+
     public class RegisteredDeviceSummaryUI
     {
         public DeviceInformationSummaryUI deviceInfo = new DeviceInformationSummaryUI();
         public NetworkInformationSummaryUI networkInfo = new NetworkInformationSummaryUI();
-
     }
+
     public class DeviceInformationSummaryUI
     {
         public string DeviceName { get; set; }
@@ -29,8 +24,8 @@ namespace IXMWEBv2.Devices.RegisterDevice
         public string TransactionCapacity { get; set; }
         public string UserCapacity1N { get; set; }
         public string UserCapaicty11 { get; set; }
-
     }
+
     public class NetworkInformationSummaryUI
     {
         public string CommMode { get; set; }

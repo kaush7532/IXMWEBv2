@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IXMWEBv2.Resources.Locators;
+﻿using IXMWEBv2.Resources.Locators;
 using IXMWEBv2.Utils;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
+using System;
 
 namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
 {
@@ -33,6 +29,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
         #endregion Declaration: IXMWebServer Section
 
         #region Declaration: SSL Mode Section
+
         [FindsBy(How = How.XPath, Using = WEBCloudLocators.SSLModeStatusChkBox)]
         private IWebElement SSLmodestatuschkbox { get; set; }
 
@@ -44,10 +41,11 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
 
         [FindsBy(How = How.XPath, Using = WEBCloudLocators.CertificatePasswordTxt)]
         private IWebElement Certificatepasswordtxt { get; set; }
-        
+
         #endregion Declaration: SSL Mode Section
 
         #region Declaration: Buttons Section
+
         [FindsBy(How = How.XPath, Using = WEBCloudLocators.WEBCloudApplyBtn)]
         private IWebElement WEBcloudapplybtn { get; set; }
 
@@ -61,7 +59,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
         [FindsBy(How = How.XPath, Using = CommonLocators.KendoMsgTxt)]
         private IWebElement WEBCloudMsgWindowTxt { get; set; }
 
-
         [FindsBy(How = How.Id, Using = CommonLocators.KendoMsgOKBtn)]
         private IWebElement WEBCloudMsgOKBtn { get; set; }
 
@@ -70,7 +67,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
 
         #endregion Declaration: KendoMsgBox Section
 
-        #region Declaration: WEBCloudSettings Reset Window Section 
+        #region Declaration: WEBCloudSettings Reset Window Section
 
         [FindsBy(How = How.Id, Using = WEBCloudLocators.WEBCloudResetWindow)]
         private IWebElement WEBcloudresetwindow { get; set; }
@@ -78,7 +75,9 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
         [FindsBy(How = How.XPath, Using = WEBCloudLocators.WEBCloudMSGResetBtn)]
         private IWebElement WEBcloudmsgresetbtn { get; set; }
 
-        #endregion Declaration: WEBCloudSettings Reset Window Section 
+        #endregion Declaration: WEBCloudSettings Reset Window Section
+
+
 
         #endregion Declaration: WEBCloudSettings Section
 
@@ -90,21 +89,19 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
         {
             try
             {
-
                 WaitForElementPresent(WEBcloudapplybtn);
-                
+
                 if (IsElementPresent(WEBcloudsettingsswitchchkbox) &&
                     IsElementPresent(WEBcloudurltxt) &&
                     //IsElementPresent(WEBcloudporttxt) &&
                     IsElementPresent(SSLmodestatuschkbox) &&
                     IsElementPresent(Defaultcertificatechkbox) &&
-                   //IsElementPresent(Certificatefordevicedropdown) &&
+                    //IsElementPresent(Certificatefordevicedropdown) &&
                     IsElementPresent(Certificatepasswordtxt) &&
                     IsElementPresent(WEBcloudapplybtn) &&
                     IsElementPresent(WEBcloudresetbtn))
                     return true;
                 return false;
-                
             }
             catch (Exception ex)
             {
@@ -112,10 +109,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
                 return false;
                 throw;
             }
-
-
-            
-
         }
 
         /// <summary>
@@ -163,7 +156,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
             return IsCheckboxActive(WEBCloudLocators.WEBCloudSettingsSwitchChkBoxId);
         }
 
-       
         /// <summary>
         /// Method to enter WEBCloud URL.
         /// </summary>
@@ -175,7 +167,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
             {
                 EnterValueTextbox(WEBcloudurltxt, cloudurl);
                 Logger.Info("Cloud URL: " + cloudurl + "is entered in WEBCloud URL textbox");
-                
             }
             catch (Exception ex)
             {
@@ -184,7 +175,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
             }
             return cloudurl;
         }
-
 
         /// <summary>
         /// Method to set WEBCloud Port.
@@ -213,7 +203,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
             }
             return Convert.ToInt32(WEBcloudporttxt.GetAttribute("value"));
         }
-
 
         /// <summary>
         /// Method to click apply button on WEBCloudSettings
@@ -288,7 +277,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
 
                 var x = WEBcloudporttxt.GetAttribute("value");
                 settings.WEBCloudPortValue = Convert.ToInt32(WEBcloudporttxt.GetAttribute("value"));
-                                
+
                 //settings.WEBCloudSettingsStatusTxtValue =
                 Logger.Info(string.Format("Retrived WEBCloud setting from info status {0}, URL {1}, port {2}",
                     settings.WEBCloudStatus, settings.WEBCloudSettingsUrlTxtValue, settings.WEBCloudPortValue));

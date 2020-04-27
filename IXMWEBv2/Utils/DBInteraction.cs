@@ -1,10 +1,10 @@
-﻿using System;
+﻿using IXMWEBv2.Models.DBModels;
+using IXMWEBv2.WebDriverFactory;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using IXMWEBv2.Models.DBModels;
-using IXMWEBv2.WebDriverFactory;
 
 namespace IXMWEBv2.Utils
 {
@@ -213,7 +213,7 @@ namespace IXMWEBv2.Utils
                         string query6 = "delete from DevicesInDeviceGroup where deviceid='" + db + "'";
                         cmd.CommandText = query6;
                         cmd.ExecuteNonQuery();
-                        
+
                         string query5 = "delete from Device where dbid = '" + db + "'";
                         cmd.CommandText = query5;
                         cmd.ExecuteNonQuery();

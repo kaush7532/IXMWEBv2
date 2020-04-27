@@ -1,9 +1,9 @@
-﻿using System;
-using IXMWEBv2.Constants;
+﻿using IXMWEBv2.Constants;
 using IXMWEBv2.Resources.Locators;
 using IXMWEBv2.Utils;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
+using System;
 
 namespace IXMWEBv2.PageObjects
 {

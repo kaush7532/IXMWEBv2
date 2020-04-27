@@ -1,6 +1,6 @@
-﻿using System;
-using IXMWEBv2.Utils;
+﻿using IXMWEBv2.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace IXMWEBv2.WebDriverFactory
 {

@@ -4,10 +4,6 @@ using IXMWEBv2.Helper_SDK;
 using IXMWEBv2.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings
 {
@@ -143,13 +139,12 @@ namespace IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings
             }
         }
 
-
         #endregion Set bluetooth Test Case
 
-        #endregion
-
+        #endregion Test Methods
 
         #region Test Cleanup procedure
+
         [TestCleanup]
         public void Cleanup()
         {
@@ -158,12 +153,11 @@ namespace IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings
             {
                 bluetoothSDK.ResetBluetoothStatus();
             }
-
         }
 
         [ClassCleanup]
         public static void Quit()
-        {            
+        {
             loginAccessLayer.Quit();
         }
 

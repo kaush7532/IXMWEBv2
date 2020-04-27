@@ -30,7 +30,7 @@
         public const string VOIP = "VOIP";
         public const string USBAuxPortModule = "USBAuxiliaryPortSettings";
         public const string BluetoothModule = "BluetoothSettings";
-        
+
         public const string WEBCloudModule = "WEBCloudSettings";
         public const string HomeModule = "Home";
         public const string UserGroupModule = "UserGroup";
@@ -39,6 +39,7 @@
 
         //public const string LogsModule = "Log";
         public const string TransactionLogModule = "TransactionLog";
+
         public const string ApplicationLogModule = "ApplicationLog";
         public const string SyncModule = "Sync";
         public const string EmailConfigurationModule = "EmailConfiguartion";

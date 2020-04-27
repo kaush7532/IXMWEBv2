@@ -1,5 +1,5 @@
-﻿using System;
-using IXMWEBv2.Utils;
+﻿using IXMWEBv2.Utils;
+using System;
 
 namespace IXMWEBv2.QuickNavigationPane.Sync
 {
@@ -46,8 +46,6 @@ namespace IXMWEBv2.QuickNavigationPane.Sync
                 Logger.Error(ex, "Unable to create sync group along with employee group and device group");
                 throw;
             }
-
-
         }
 
         /// <summary>

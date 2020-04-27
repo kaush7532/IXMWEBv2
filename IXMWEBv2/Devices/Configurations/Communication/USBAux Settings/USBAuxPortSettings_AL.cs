@@ -1,7 +1,7 @@
-﻿using System;
-using System.Threading;
-using IXMWEBv2.Constants;
+﻿using IXMWEBv2.Constants;
 using IXMWEBv2.Utils;
+using System;
+using System.Threading;
 
 namespace IXMWEBv2.Devices.Configurations.Communication.USBAuxSettings
 {

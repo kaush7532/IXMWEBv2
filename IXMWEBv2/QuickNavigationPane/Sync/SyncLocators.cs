@@ -19,7 +19,7 @@
         public const string CancelSyncBtn = "btnCancelSync";
 
         public const string SyncListGrid = "ExistingSyncList";
-                
+
         public const string SyncGroupEdit = ".//*[@id='" + SyncListGrid + "']//tbody//tr//td[text()='#SYNCNAME']/ancestor::tr//i[@title='Edit']";
         public const string SyncGroupSync = ".//*[@id='" + SyncListGrid + "']//tbody//tr//td[text()='#SYNCNAME']/ancestor::tr//i[@title='Sync']";
         public const string SyncGroupDelete = ".//*[@id='" + SyncListGrid + "']//tbody//tr//td[text()='#SYNCNAME']/ancestor::tr//i[@title='Delete']";

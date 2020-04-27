@@ -1,17 +1,12 @@
 ﻿using IXMWEBv2.Constants;
-using IXMWEBv2.Models;
 using IXMWEBv2.PageObjects.DevicePageObjects;
 using IXMWEBv2.Resources.Locators;
 using IXMWEBv2.Utils;
-using IXMWEBv2.WebDriverFactory;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace IXMWEBv2.Devices.RegisterDevice
 {
@@ -39,11 +34,13 @@ namespace IXMWEBv2.Devices.RegisterDevice
             }
             return result;
         }
+
         public bool IsAddDeviceRegisterUIValid()
         {
             bool result = false;
             return result;
         }
+
         public bool IsAddDeviceSummaryUIValid()
         {
             bool result = false;
@@ -155,7 +152,6 @@ namespace IXMWEBv2.Devices.RegisterDevice
             return registerDevicePO.CompleteDeviceRegisteredPopup();
         }
 
-
         public void ContinueDeviceRegistration()
         {
             try
@@ -214,7 +210,6 @@ namespace IXMWEBv2.Devices.RegisterDevice
                         {
                             Logger.Error(ex, "Failed in loop of register device" + deviceToRegisterName);
                             throw;
-
                         }
                     }
                 }

@@ -1,15 +1,15 @@
-﻿using IXMWEBv2.Resources.Locators;
+﻿using IXMWEBv2.Devices.Configurations.Overview;
+using IXMWEBv2.Devices.DeviceOperations;
+using IXMWEBv2.Models.DBModels;
+using IXMWEBv2.Resources.Locators;
 using IXMWEBv2.Resources.Locators.DeviceTile;
 using IXMWEBv2.Utils;
 using OpenQA.Selenium;
-using System;
-using System.Threading;
 using SeleniumExtras.PageObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using IXMWEBv2.Models.DBModels;
-using IXMWEBv2.Devices.DeviceOperations;
-using IXMWEBv2.Devices.Configurations.Overview;
+using System.Threading;
 
 namespace IXMWEBv2.PageObjects.DevicePageObjects
 {
@@ -20,7 +20,7 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
             PageFactory.InitElements(_driver, this);
         }
 
-        #region Declaration: DeviceListPage        
+        #region Declaration: DeviceListPage
 
         [FindsBy(How = How.Id, Using = DeviceOperationsLocators.DeviceListLink)]
         private IWebElement DeviceListLink { get; set; }
@@ -42,7 +42,7 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
 
         #endregion Declaration: DeviceListPage
 
-        #region Declaration: DeviceListPageButton        
+        #region Declaration: DeviceListPageButton
 
         [FindsBy(How = How.XPath, Using = DeviceOperationsLocators.DeleteBtn)]
         private IWebElement DeleteBtn { get; set; }
@@ -65,8 +65,6 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
         [FindsBy(How = How.XPath, Using = DeviceOperationsLocators.FactoryDefaultBtn)]
         private IWebElement FactoryDefaultBtn { get; set; }
 
-
-
         #endregion Declaration: DeviceListPageButton
 
         #region Declaration: DeviceListPage Msg/text boxes
@@ -80,14 +78,11 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
         [FindsBy(How = How.Id, Using = DeviceOperationsLocators.RebootWindow)]
         private IWebElement RebootWindow { get; set; }
 
-
         [FindsBy(How = How.Id, Using = DeviceOperationsLocators.DeleteBtnOnWindow)]
         private IWebElement DeleteBtnOnWindow { get; set; }
 
         [FindsBy(How = How.Id, Using = DeviceOperationsLocators.CancelBtnOnWindow)]
         private IWebElement CancelBtnOnWindow { get; set; }
-
-
 
         [FindsBy(How = How.Id, Using = DeviceOperationsLocators.KendoMsgWindow)]
         private IWebElement KendoMsgWindow { get; set; }
@@ -107,14 +102,14 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
         [FindsBy(How = How.Id, Using = DeviceOperationsLocators.SearchTxtBox)]
         private IWebElement SearchTxtBox { get; set; }
 
-
-
-        #endregion Declaration: DeviceListPage Msg/Text boxes
+        #endregion Declaration: DeviceListPage Msg/text boxes
 
         #region DeviceConfiguration details
+
         [FindsBy(How = How.Id, Using = OverviewTabLocators.OverviewTab)]
         private IWebElement Overviewtab { get; set; }
-        #endregion
+
+        #endregion DeviceConfiguration details
 
         /// <summary>
         /// Validate UI elements of device list page
@@ -144,7 +139,7 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
                 };
 
                 flag = AreElementsPresent(eleList, waitTime);
-                
+
                 Logger.Info("Validating Device Tab loading and UI");
                 if (flag)
                 {
@@ -215,7 +210,6 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
             string status = null;
             try
             {
-
                 WaitForElementDisappear(By.XPath(CommonLocators.loadingIconSmall), 20);
                 status = DeviceStatus.Text;
             }
@@ -247,7 +241,6 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
             }
         }
 
-
         public void ScrollDeviceList()
         {
             try
@@ -257,11 +250,10 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
             }
             catch (Exception ex)
             {
-
-                throw;
+                Logger.Error(ex, "Failed to Scroll Device list");
+                throw new Exception("Failed to scroll device list");
             }
         }
-
 
         /// <summary>
         /// Method to select device as per deviceinfo
@@ -321,7 +313,6 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
                 }
                 serialno = serialno.Replace("deviceName_", "");
                 Logger.Info("Selected device serial is " + serialno);
-
             }
             catch (Exception ex)
             {
@@ -330,7 +321,6 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
             }
             return serialno;
         }
-
 
         public List<DeviceListModel> GetDeviceListDetails()
         {
@@ -359,7 +349,7 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
 
         /// <summary>
         /// Bug already logged. Search button doesn't work rather user Enter key
-        /// Method to Search device based on serial, name, ip address 
+        /// Method to Search device based on serial, name, ip address
         /// </summary>
         /// <param name="deviceinfo"></param>
         public List<DeviceListModel> SearchDevice(string deviceinfo)
@@ -372,7 +362,6 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
                 SearchTxtBox.SendKeys(Keys.Enter);
 
                 Logger.Info("Searched devices with criteria: " + deviceinfo);
-
             }
             catch (Exception ex)
             {

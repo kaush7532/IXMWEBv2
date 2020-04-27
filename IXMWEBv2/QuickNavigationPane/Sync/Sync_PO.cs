@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using IXMWEBv2.Utils;
+﻿using IXMWEBv2.Utils;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace IXMWEBv2.QuickNavigationPane.Sync
 {
@@ -165,9 +165,8 @@ namespace IXMWEBv2.QuickNavigationPane.Sync
                 }
             }
         }
+
         #endregion Adding employee groups to sync group methods
-
-
 
         #region Adding device groups to sync group methods
 
@@ -239,6 +238,7 @@ namespace IXMWEBv2.QuickNavigationPane.Sync
                 }
             }
         }
+
         #endregion Adding device groups to sync group methods
 
         /// <summary>
@@ -264,13 +264,13 @@ namespace IXMWEBv2.QuickNavigationPane.Sync
         }
 
         /// <summary>
-        /// Method clicks on "Sync" button 
+        /// Method clicks on "Sync" button
         /// </summary>
         public void ClickSyncGrpSaveBtn()
         {
             try
             {
-                if(IsElementPresent(CreateSyncBtn))
+                if (IsElementPresent(CreateSyncBtn))
                 {
                     ClickElement(CreateSyncBtn);
                     Logger.Info("Able to click on create sync button");

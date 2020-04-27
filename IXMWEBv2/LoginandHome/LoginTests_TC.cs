@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using IXMWEBv2.Constants;
+﻿using IXMWEBv2.Constants;
 using IXMWEBv2.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace IXMWEBv2.Tests.Home
 {
@@ -19,7 +18,6 @@ namespace IXMWEBv2.Tests.Home
         {
             base.Setup();
         }
-
 
         /// <summary>
         /// Method to verify login page UI elements
@@ -86,15 +84,14 @@ namespace IXMWEBv2.Tests.Home
             }
         }
 
-
         //[TestMethod] // place only on the list--not the individuals
         //public void OrderedStepsTest()
         //{
         //    OrderedTest.Run(TestContext, new List<OrderedTest>
         //    {
         //        new OrderedTest ( LoginPageUI, false ),
-        //        new OrderedTest ( AdminLogIn, false ),                
-        //        new OrderedTest ( LogOut, true ) // continue on failure                
+        //        new OrderedTest ( AdminLogIn, false ),
+        //        new OrderedTest ( LogOut, true ) // continue on failure
         //        // ...
         //    });
         //}

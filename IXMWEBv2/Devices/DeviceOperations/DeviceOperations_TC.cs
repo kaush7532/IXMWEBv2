@@ -1,9 +1,9 @@
-﻿using System;
-using IXMWEBv2.AccessLayer.DeviceAccessLayers;
+﻿using IXMWEBv2.AccessLayer.DeviceAccessLayers;
 using IXMWEBv2.Constants;
 using IXMWEBv2.Utils;
 using IXMWEBv2.WebDriverFactory;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace IXMWEBv2.Tests.Devices
 {
@@ -76,8 +76,6 @@ namespace IXMWEBv2.Tests.Devices
             }
         }
 
-       
-
         [TestMethod]
         [TestCategory(Module.DeviceModule), TestCategory(TestSuite.Smoke), TestCategory(TestSuite.UI)]
         public void DeviceListPageUI()
@@ -93,10 +91,6 @@ namespace IXMWEBv2.Tests.Devices
                 Assert.Fail(ex.Message);
             }
         }
-
-
-
-
 
         #endregion Testcase Methods
 

@@ -1,5 +1,4 @@
-﻿using System;
-using IXMWEBv2.Utils;
+﻿using IXMWEBv2.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -8,6 +7,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace IXMWEBv2.WebDriverFactory
 {
@@ -119,9 +119,7 @@ namespace IXMWEBv2.WebDriverFactory
                 case "chrome":
                     ChromeOptions options = new ChromeOptions();
                     options.AddArguments("disable-infobars");
-                    DesiredCapabilities dc = new DesiredCapabilities();
-                    dc.SetCapability(ChromeOptions.Capability, options);
-
+                    options.AddAdditionalCapability("useAutomationExtension", false);
                     _driver = new ChromeDriver(options);
                     _driver.Manage().Window.Maximize();
                     break;

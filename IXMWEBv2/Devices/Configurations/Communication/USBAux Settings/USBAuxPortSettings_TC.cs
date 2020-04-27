@@ -1,9 +1,9 @@
-﻿using System;
-using IXMWEBv2.AccessLayer.DeviceAccessLayers;
+﻿using IXMWEBv2.AccessLayer.DeviceAccessLayers;
 using IXMWEBv2.Constants;
 using IXMWEBv2.Helper_SDK;
 using IXMWEBv2.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace IXMWEBv2.Devices.Configurations.Communication.USBAuxSettings
 {

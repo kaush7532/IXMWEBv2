@@ -30,10 +30,9 @@ namespace IXMWEBv2.Devices.RegisterDevice
             base.Setup();
             dbInteraction.DeleteDeviceFromDb(DriverManager.deviceToRegisterIP);
             loginAccessLayer.LoginIXMWeb();
-            
+
             ixmUtils.GoToTab(MainTabs.Devices);
             registerdeviceAL = new RegisterDevice_AL();
-            
         }
 
         #endregion Initialization methods
@@ -46,7 +45,6 @@ namespace IXMWEBv2.Devices.RegisterDevice
         {
             try
             {
-                
                 deviceListAccessLayer = new DeviceOperations_AL();
                 deviceListAccessLayer.AddDevice();
 
@@ -76,7 +74,6 @@ namespace IXMWEBv2.Devices.RegisterDevice
 
                 string deviceName = "IXMSHR";
                 registerdeviceAL.BulkRegisterDevice(deviceName, deviceGrpName: "Simulator");
-
             }
             catch (Exception ex)
             {
@@ -111,7 +108,6 @@ namespace IXMWEBv2.Devices.RegisterDevice
                 //Db verification
                 //ToDo but already from UI below SDK verification is done
 
-
                 //SDK for verification
                 var deviceSDKSettings = new GeneralInfo_SDK(DriverManager.deviceToRegisterIP, DriverManager.deviceToRegisterPort, IXMSoft.Business.SDK.Data.DeviceConnectionType.Ethernet);
                 var sdkdetails = deviceSDKSettings.GetDeviceGeneralInfo();
@@ -121,7 +117,6 @@ namespace IXMWEBv2.Devices.RegisterDevice
                 Assert.AreEqual(sdkdetails.FwVersion, uidetails.deviceInfo.FirmwareVersion, "Device firmware invalid");
                 Assert.AreEqual(sdkdetails.Mac, uidetails.networkInfo.MacID, "Device MAC invalid");
                 Assert.AreEqual(sdkdetails.IPAddress, uidetails.networkInfo.IP, "Device IP invalid");
-                
             }
             catch (Exception ex)
             {
@@ -170,7 +165,6 @@ namespace IXMWEBv2.Devices.RegisterDevice
                 Assert.Fail(ex.Message);
             }
         }
-
 
         //To Do yet
         [TestMethod]
@@ -233,10 +227,9 @@ namespace IXMWEBv2.Devices.RegisterDevice
 
                 deviceSDKSettings = new GeneralInfo_SDK(DriverManager.deviceToRegisterIP, changedPort, IXMSoft.Business.SDK.Data.DeviceConnectionType.Ethernet);
 
-
                 var sdkdetails = deviceSDKSettings.GetDeviceGeneralInfo();
 
-                //Db verification                
+                //Db verification
                 //UI doesn't have port so verifying sdk and db for port.
                 var deviceDBInfo = dbInteraction.GetDeviceDetailsFromDB(DriverManager.deviceToRegisterIP);
                 Assert.AreEqual(sdkdetails.Port, deviceDBInfo.Port);
@@ -282,7 +275,7 @@ namespace IXMWEBv2.Devices.RegisterDevice
                     deviceSDKSettings = new GeneralInfo_SDK(uidetails.networkInfo.IP, "9734", IXMSoft.Business.SDK.Data.DeviceConnectionType.Ethernet);
                     var sdkdetails = deviceSDKSettings.GetDeviceGeneralInfo();
 
-                    //Db verification                
+                    //Db verification
 
                     //SDK verification
                     Assert.AreEqual(sdkdetails.Name, uidetails.deviceInfo.DeviceName, "Device name invalid");
@@ -299,13 +292,14 @@ namespace IXMWEBv2.Devices.RegisterDevice
                 Assert.Fail(ex.Message);
             }
         }
-        #endregion
+
+        #endregion Test Methods
 
         #region Cleanup methods
 
         [TestCleanup]
         public void Cleanup()
-        {            
+        {
             base.TearDown();
         }
 
@@ -316,6 +310,5 @@ namespace IXMWEBv2.Devices.RegisterDevice
         }
 
         #endregion Cleanup methods
-
     }
 }

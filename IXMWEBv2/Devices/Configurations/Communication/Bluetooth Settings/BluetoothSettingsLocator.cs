@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings
+﻿namespace IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings
 {
     public class BluetoothSettingsLocator
     {
         #region Bluetooth Settings Locators
+
         public const string BluetoothDiv = "Bluetooth";
         public const string BluetoothBodySection = "bluetoothCommBody";
 
@@ -24,7 +19,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings
         public const string BluetoothResetWindowResetBtn = ".//*[@id='" + BluetoothResetWindow + "']//a[@title='Reset']";
         public const string BluetoothResetWindowCancelBtn = ".//*[@id='" + BluetoothResetWindow + "']//a[@title='Cancel']";
 
-
-        #endregion
+        #endregion Bluetooth Settings Locators
     }
 }

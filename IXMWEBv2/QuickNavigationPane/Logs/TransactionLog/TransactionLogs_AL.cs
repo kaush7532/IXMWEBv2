@@ -1,10 +1,10 @@
-﻿using System;
-using IXMWEBv2.PageObjects.QuickNavigationPanePageObjects.LogsPageObjects;
+﻿using IXMWEBv2.PageObjects.QuickNavigationPanePageObjects.LogsPageObjects;
 using IXMWEBv2.Resources.Locators;
 using IXMWEBv2.Resources.Locators.Logs;
 using IXMWEBv2.Utils;
 using IXMWEBv2.WebDriverFactory;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace IXMWEBv2.AccessLayer.QuickNavigationPaneAccessLayers.LogsAccessLayers
 {

@@ -1,10 +1,5 @@
 ﻿using IXMWEBv2.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings
 {
@@ -18,7 +13,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings
             bluetoothpo = new BluetoothSettings_PO();
             commpo = new Communication_PO();
             commpo.ShowBluetoothSettings(true);
-            
         }
 
         /// <summary>
@@ -53,7 +47,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings
             {
                 commpo.ShowBluetoothSettings();
                 bsm = bluetoothpo.ClickReset();
-             
             }
             catch (Exception ex)
             {
@@ -62,6 +55,5 @@ namespace IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings
             }
             return bsm;
         }
-
     }
 }

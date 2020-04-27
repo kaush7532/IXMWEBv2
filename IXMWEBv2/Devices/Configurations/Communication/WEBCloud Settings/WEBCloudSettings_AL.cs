@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IXMWEBv2.Constants;
+﻿using IXMWEBv2.Constants;
 using IXMWEBv2.Utils;
+using System;
 
 namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
 {
@@ -84,7 +80,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
                 webcloudSettings.WEBCloudSettingsUrlTxtValue = webcloudpo.EnterWEBCloudURL(cloudurl);
 
                 //set Wiegandstatus
-                webcloudSettings.WEBCloudPortValue = webcloudpo.SetWEBCloudPort(cloudport) ;
+                webcloudSettings.WEBCloudPortValue = webcloudpo.SetWEBCloudPort(cloudport);
 
                 //click on apply button
                 webcloudSettings.WEBCloudSettingsStatusTxtValue = webcloudpo.ClickApply();
@@ -98,7 +94,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
             }
             return webcloudSettings;
         }
-
 
         /// <summary>
         /// Reset web cloud settings from UI

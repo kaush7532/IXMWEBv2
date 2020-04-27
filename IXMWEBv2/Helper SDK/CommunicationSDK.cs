@@ -1,19 +1,17 @@
-﻿using System;
-using IXMSoft.Business.SDK;
+﻿using IXMSoft.Business.SDK;
 using IXMSoft.Business.SDK.Commands;
 using IXMSoft.Business.SDK.IXMException;
 using IXMWEBv2.Utils;
+using System;
 
 namespace IXMWEBv2.Helper_SDK
 {
     public class CommunicationSDK : DeviceInfo_SDK
     {
-        private VOIPConfigurationManager dtmfVoip;
-        private NetworkConfigurationManager ncm;
+        private VOIPConfigurationManager dtmfVoip;        
         private CloudSettingsManager webCloud;
         private BluetoothManager bluetooth;
-        private WebURLManager sum;
-        //private NetworkConfigurationManager ncm;
+        private WebURLManager wum;        
 
         public CommunicationSDK()
         {
@@ -21,26 +19,28 @@ namespace IXMWEBv2.Helper_SDK
             ncm = new NetworkConfigurationManager(nc);
             webCloud = new CloudSettingsManager(nc);
             bluetooth = new BluetoothManager(nc);
-            sum = new WebURLManager(nc);
+            wum = new WebURLManager(nc);
             //ncm = new NetworkConfigurationManager(nc);
         }
 
         #region IXMWEB ServerURL Methods
+
         public string GetIXMWEBServerURL()
         {
-            return sum.RetrieveWEBUrl();
+            return wum.RetrieveWEBUrl();
         }
 
         public void SetIXMWEBServerULR(string urlValue)
         {
-            sum.SaveWebUrl(urlValue);
+            wum.SaveWebUrl(urlValue);
         }
 
         public void ResetIXMWEBServerURL()
         {
-            sum.RestoreWebUrl();
+            wum.RestoreWebUrl();
         }
-        #endregion
+
+        #endregion IXMWEB ServerURL Methods
 
         #region DTMF Methods
 
@@ -122,6 +122,7 @@ namespace IXMWEBv2.Helper_SDK
         #endregion DTMF Methods
 
         #region Bluetooth Methods
+
         /// <summary>
         /// Retrieve BluetoothStatus
         /// </summary>
@@ -177,10 +178,9 @@ namespace IXMWEBv2.Helper_SDK
                 }
             }
             Logger.Info("After Changing Bluetooth Status: " + GetBluetoothStatus());
-
         }
 
-        #endregion
+        #endregion Bluetooth Methods
 
         #region USB Aux Port Methods
 
@@ -413,7 +413,7 @@ namespace IXMWEBv2.Helper_SDK
                 throw;
             }
         }
-               
+
         #endregion WEBCloud Methods
     }
 }

@@ -1,9 +1,5 @@
 ﻿using IXMWEBv2.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings
 {
@@ -33,7 +29,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings
 
                 //Get URL
                 url = ixmwebserverpo.GetIXMWEBServerURL();
-
             }
             catch (Exception ex)
             {
@@ -67,7 +62,5 @@ namespace IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings
             }
             return model;
         }
-
-
     }
 }

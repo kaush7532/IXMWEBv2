@@ -1,10 +1,9 @@
-﻿using System;
-using IXMWEBv2.AccessLayer.EmployeeAccessLayer;
-using IXMWEBv2.Resources.Locators.Users;
+﻿using IXMWEBv2.AccessLayer.EmployeeAccessLayer;
+using IXMWEBv2.Employees.EmployeeList;
 using IXMWEBv2.Utils;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
-using IXMWEBv2.Employees.EmployeeList;
+using System;
 
 namespace IXMWEBv2.PageObjects.EmployeePageObject
 {

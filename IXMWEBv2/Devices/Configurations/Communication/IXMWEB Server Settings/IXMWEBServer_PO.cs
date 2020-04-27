@@ -4,9 +4,6 @@ using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings
 {
@@ -18,6 +15,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings
         }
 
         #region IXMWEB Server Locator Declaration
+
         [FindsBy(How = How.XPath, Using = IXMWEBServerLocator.IXMWEBServerURLTxt)]
         private IWebElement IXMWEBServerURLTxtBox { get; set; }
 
@@ -36,11 +34,10 @@ namespace IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings
         [FindsBy(How = How.Id, Using = CommonLocators.KendoMsgWindowTitle)]
         private IWebElement KendoMsgWindowTitle { get; set; }
 
-
-
-        #endregion
+        #endregion IXMWEB Server Locator Declaration
 
         #region Methods
+
         /// <summary>
         /// Method to validate IXMWEB Server Page UI elements
         /// </summary>
@@ -88,7 +85,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings
             }
             catch (Exception ex)
             {
-                throw new Exception("Failed to enter IXMWEB Server URL value in text box");
+                throw new Exception("Failed to enter IXMWEB Server URL value in text box", ex.InnerException);
             }
             return IXMWEBServerURLTxtBox.Text;
         }
@@ -124,7 +121,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings
                 WaitElementToBeClickable(IXMWEBServerURLApplyBtn);
                 ClickElement(IXMWEBServerURLApplyBtn);
                 Logger.Info("Clicked Apply button on IXMWEBServer UI");
-                //Click on IXMWEB Server settings                
+                //Click on IXMWEB Server settings
                 if (IsElementPresent(KendoMsgWindow, 10))
                 {
                     msg = KendoMsgWindowTxt.Text;
@@ -150,7 +147,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings
             };
         }
 
-        #endregion
+        #endregion Methods
     }
-
 }

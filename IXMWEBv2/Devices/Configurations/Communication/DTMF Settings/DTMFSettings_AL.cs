@@ -1,5 +1,5 @@
-﻿using System;
-using IXMWEBv2.Utils;
+﻿using IXMWEBv2.Utils;
+using System;
 
 namespace IXMWEBv2.Devices.Configurations.Communication.DTMFSettings
 {
@@ -13,8 +13,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication.DTMFSettings
             commpo = new Communication_PO();
             dtmfpo = new DTMFSettings_PO();
         }
-
-        
 
         public DTMFConfigModel GetDTMFSettingUI()
         {

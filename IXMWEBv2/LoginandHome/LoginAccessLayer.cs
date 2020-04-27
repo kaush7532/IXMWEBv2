@@ -1,10 +1,10 @@
-﻿using System;
-using IXMWEBv2.PageObjects;
+﻿using IXMWEBv2.PageObjects;
 using IXMWEBv2.Utils;
 using IXMWEBv2.WebDriverFactory;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace IXMWEBv2.AccessLayer
 {

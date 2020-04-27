@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading;
-using IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings;
+﻿using IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings;
 using IXMWEBv2.Devices.Configurations.Communication.DTMFSettings;
 using IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings;
 using IXMWEBv2.Devices.Configurations.Communication.USBAuxSettings;
@@ -9,6 +7,8 @@ using IXMWEBv2.Resources.Locators.Config.Communication;
 using IXMWEBv2.Utils;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
+using System;
+using System.Threading;
 
 namespace IXMWEBv2.Devices.Configurations.Communication
 {
@@ -40,7 +40,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication
         /// <summary>
         /// Method Expands Bluetooth settings section
         /// </summary>
-        public void ShowBluetoothSettings(bool closeSettings=false)
+        public void ShowBluetoothSettings(bool closeSettings = false)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication
                         Logger.Info("Closing BluetoothSettings.");
                     }
                 }
-                else if(!closeSettings)
+                else if (!closeSettings)
                 {
                     ClickElement(BluetoothSettingsConfigExpand);
                     Logger.Info("Expanded BluetoothSettings.");
@@ -69,7 +69,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication
                 throw new Exception("Expand Blueooth settings FAILED");
             }
         }
-
 
         /// <summary>
         /// Method Expands IXMWEB Server settings section
@@ -130,7 +129,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication
             }
         }
 
-
         /// <summary>
         /// Method Expands USB Auxiliary Port settings section
         /// </summary>
@@ -148,7 +146,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication
                 {
                     ClickElement(USBAuxPortSettingsConfig);
                     Logger.Info("Expanded USB Aux Port Settings");
-
                 }
             }
             catch (Exception ex)
@@ -175,7 +172,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication
                 {
                     ClickElement(WEBCloudSetttingsConfig);
                     Logger.Info("Expanded WEBCloud Settings");
-
                 }
             }
             catch (Exception ex)

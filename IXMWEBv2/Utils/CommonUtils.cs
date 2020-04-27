@@ -1,11 +1,11 @@
-﻿using System;
-using System.IO;
-using System.Text.RegularExpressions;
-using IXMWEBv2.Constants;
+﻿using IXMWEBv2.Constants;
 using IXMWEBv2.WebDriverFactory;
 using Microsoft.Expression.Encoder.ScreenCapture;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using System;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace IXMWEBv2.Utils
 {

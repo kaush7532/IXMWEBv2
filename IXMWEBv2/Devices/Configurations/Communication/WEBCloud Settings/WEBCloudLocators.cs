@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
+﻿namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
 {
     public class WEBCloudLocators
     {
@@ -23,7 +17,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
 
         #region IXMWebServer Locators
 
-        public const string WEBCloudUrlTxt = ".//*[@id = '"+ WEBCloudBodySection + "']//*[@id = 'cloudUrl']";
+        public const string WEBCloudUrlTxt = ".//*[@id = '" + WEBCloudBodySection + "']//*[@id = 'cloudUrl']";
 
         public const string WEBCloudPortTxt = ".//*[@id = '" + WEBCloudBodySection + "']//*[@id = 'cloudPort']";
 
@@ -47,10 +41,8 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
 
         public const string WEBCloudResetBtn = ".//*[@id='" + WEBCloudBodySection + "']//a[contains(.,'Reset')]";
 
-
         #endregion Buttons
 
-       
         public const string WEBCloudResetWindow = "RestoreCloudSettings";
 
         public const string WEBCloudMSGResetBtn = ".//*[@id='RestoreCloudSettings']//a[@title='Reset']";

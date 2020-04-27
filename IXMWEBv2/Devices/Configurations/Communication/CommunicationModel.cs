@@ -11,6 +11,7 @@
         public int DTMFCode { get; set; }
         public string DTMFSettingsStatusTxtValue { get; set; }
     }
+
     public class USBAuxPortConfigModel : CommunicationModel
     {
         public bool USBAuxPortStatus { get; set; }

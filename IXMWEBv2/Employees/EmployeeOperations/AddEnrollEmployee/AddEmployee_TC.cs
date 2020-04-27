@@ -1,9 +1,9 @@
-﻿using System;
-using System.Linq;
-using IXMWEBv2.AccessLayer.EmployeeAccessLayer;
+﻿using IXMWEBv2.AccessLayer.EmployeeAccessLayer;
 using IXMWEBv2.Constants;
 using IXMWEBv2.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Linq;
 
 namespace IXMWEBv2.Tests.Employees
 {

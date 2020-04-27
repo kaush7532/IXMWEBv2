@@ -4,11 +4,6 @@ using IXMWEBv2.Helper_SDK;
 using IXMWEBv2.Utils;
 using IXMWEBv2.WebDriverFactory;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings
 {
@@ -46,6 +41,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings
         #endregion Initialization methods
 
         #region Test Methods
+
         [TestMethod]
         [TestCategory(Module.DeviceConfiguration), TestCategory(Module.IXMWEBServerURL),
             TestCategory(TestSuite.Regression), TestCategory(TestSuite.Functional)]
@@ -111,9 +107,10 @@ namespace IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings
             Assert.AreEqual(sdkUrl, sdkUrlAfterlocalhost, "IXMWEB Server Blank url set to device");
         }
 
-        #endregion
+        #endregion Test Methods
 
         #region Test Cleanup procedure
+
         [TestCleanup]
         public void Cleanup()
         {
@@ -122,7 +119,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication.IXMWEB_Server_Settings
             {
                 //bluetoothSDK.ResetBluetoothStatus();
             }
-
         }
 
         [ClassCleanup]

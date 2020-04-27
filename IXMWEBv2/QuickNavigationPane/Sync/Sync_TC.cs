@@ -34,21 +34,15 @@ namespace IXMWEBv2.QuickNavigationPane.Sync
 
         [TestMethod]
         [TestCategory(Module.SyncModule), TestCategory(TestSuite.Regression), TestCategory(TestSuite.Functional)]
-
         public void CreateSyncGroup()
         {
             // Create Sync Group
             syncAccessLayer.CreateSyncGroup("Emp1, Emp2", "DG1, DG2");
-            
-
         }
 
         #endregion Create SyncGroup Test Case
 
-
-
         #endregion Testcase Methods
-
 
         #region Test Cleanup procedure
 

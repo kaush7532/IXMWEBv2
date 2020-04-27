@@ -10,8 +10,10 @@
         public const string AddBtn = "Create";
 
         #region Tree View
+
         public const string OverwriteBtn = "deviceTransferToDeviceOverwrite";
         public const string SkipOverwriteBtn = "deviceTransferToDevice";
-        #endregion
+
+        #endregion Tree View
     }
 }

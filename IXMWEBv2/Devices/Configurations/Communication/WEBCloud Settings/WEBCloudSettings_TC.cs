@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IXMWEBv2.AccessLayer.DeviceAccessLayers;
+﻿using IXMWEBv2.AccessLayer.DeviceAccessLayers;
 using IXMWEBv2.Constants;
 using IXMWEBv2.Helper_SDK;
 using IXMWEBv2.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
 {
     [TestClass]
     public class WEBCloudSettings_TC : BaseTest
     {
-
         private DeviceOperations_AL deviceListAccessLayer;
         private WEBCloudSettings_AL webcloudSettingsAccessLayer;
         private CommunicationSDK webcloudSDK;
@@ -63,12 +58,13 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
                 Assert.Fail(ex.Message);
             }
         }
+
         #endregion Verify WEBCloud Settings UI testcase
 
         #region Set WEBCloud setting Test Case
 
         [TestMethod]
-        [TestCategory(Module.WEBCloudModule), TestCategory(TestSuite.Regression), 
+        [TestCategory(Module.WEBCloudModule), TestCategory(TestSuite.Regression),
             TestCategory(TestSuite.Functional), TestCategory(Module.DeviceConfiguration)]
         public void SetWEBCloudSettings()
         {
@@ -90,7 +86,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
                 Assert.AreEqual(uiWEBCloud.WEBCloudStatus, sdkGetWEBCloud.CloudStatus, "WEBCloud status failed");
                 Assert.AreEqual(uiWEBCloud.WEBCloudSettingsUrlTxtValue, sdkGetWEBCloud.CloudUrl, "WEBCloud URL failed");
                 Assert.AreEqual(uiWEBCloud.WEBCloudPortValue, sdkGetWEBCloud.Port, "WEBCloud Port failed");
-                
             }
             catch (Exception ex)
             {
@@ -105,7 +100,7 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
         #region Reset WEBCloud Setting Test Case
 
         [TestMethod]
-        [TestCategory(Module.WEBCloudModule), TestCategory(TestSuite.Regression), 
+        [TestCategory(Module.WEBCloudModule), TestCategory(TestSuite.Regression),
             TestCategory(TestSuite.Functional), TestCategory(Module.DeviceConfiguration)]
         public void ResetWEBCloudSettings()
         //Test to reset WEBCloud settings
@@ -141,7 +136,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication.WEBCloud_Settings
 
                 //get WEBCloud settings using SDK
                 var sdkGetWEBCloudSettings = webcloudSDK.GetWEBCloudSettings();
-               
 
                 //Verify message
                 Assert.AreEqual(UIGetWEBCloud.WEBCloudStatus, sdkGetWEBCloudSettings.CloudStatus, "WEBCloud status Restored");

@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IXMWEBv2.AccessLayer.EmployeeAccessLayer;
-using IXMWEBv2.Constants;
+﻿using IXMWEBv2.Constants;
 using IXMWEBv2.Resources.Locators.Users;
 using IXMWEBv2.Utils;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 using System;
-using System.Threading;
 
 namespace IXMWEBv2.PageObjects.EmployeePageObject
 {
@@ -20,11 +13,8 @@ namespace IXMWEBv2.PageObjects.EmployeePageObject
 
         public AddEmployeePage_PO()
         {
-
             PageFactory.InitElements(_driver, this);
         }
-
-
 
         #region User Information elements
 
@@ -84,7 +74,6 @@ namespace IXMWEBv2.PageObjects.EmployeePageObject
 
         [FindsBy(How = How.XPath, Using = AddUserPageLocators.UserSearchIcon)]
         private IWebElement userSearchIcon { get; set; }
-
 
         #endregion User Information elements
 
@@ -259,7 +248,6 @@ namespace IXMWEBv2.PageObjects.EmployeePageObject
             {
                 ClickElement(addEmployeeBtn);
             }
-
         }
 
         public void SetFirstName(string firstName = null)

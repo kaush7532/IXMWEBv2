@@ -1,8 +1,8 @@
-﻿using System;
-using IXMWEBv2.Constants;
+﻿using IXMWEBv2.Constants;
 using IXMWEBv2.Utils;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
+using System;
 
 namespace IXMWEBv2.Devices.Configurations.Communication.USBAuxSettings
 {

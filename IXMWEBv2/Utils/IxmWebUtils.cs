@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using IXMWEBv2.Constants;
+﻿using IXMWEBv2.Constants;
 using IXMWEBv2.Models;
 using IXMWEBv2.Models.DBModels;
 using IXMWEBv2.QuickNavigationPane.Logs.ApplicationLogs;
@@ -11,6 +7,10 @@ using IXMWEBv2.Resources.Locators.Config.Communication;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 
 namespace IXMWEBv2.Utils
 {
@@ -19,8 +19,6 @@ namespace IXMWEBv2.Utils
         public static IWebElement switchXpath;
         private static IWebDriver driver;
         private static WebDriverWait wait;
-        private static DateTime execStart;
-        private static DateTime execStop;
 
         public IXMWebUtils()
         {
@@ -499,10 +497,9 @@ namespace IXMWEBv2.Utils
             {
                 List<string> deviceNames = new List<string>(listOfDevices.Select(x => x.DeviceName).ToList());
 
-                //Search Device 
+                //Search Device
                 foreach (var item in listOfDevices)
                 {
-
                     EnterValueTextbox(_driver.FindElement(By.Id(CommonLocators.searchDeviceBox)), item.DeviceName);
                     ClickElement(_driver.FindElement(By.XPath(CommonLocators.searchDeviceBtn.Replace("#GRIDID", deviceTreeID))));
                     string DeviceChkBox = CommonLocators.DeviceSelectionChkBox.Replace("#GRIDID", deviceTreeID).Replace("#DEVICENAME", item.DeviceName);
@@ -510,11 +507,7 @@ namespace IXMWEBv2.Utils
                     ClickElement(deviceChkBoxElement);
                 }
 
-
-
                 //From search result select device to download logs
-
-
 
                 var deviceGroupNamesXpath = _driver.FindElements(By.XPath(".//*[@class='k-icon k-i-expand']/following-sibling::span[@class='k-in']"));
 
@@ -712,10 +705,8 @@ namespace IXMWEBv2.Utils
 
                 flag = _waittemp.Until<bool>((d) => { return d.FindElements(By.XPath(loaderImage)).Any(x => x.Displayed.Equals(true)); });
 
-
                 if (flag && waitforDisappear)
                 {
-
                     DateTime before = DateTime.Now;
                     try
                     {
@@ -728,16 +719,15 @@ namespace IXMWEBv2.Utils
                     catch (StaleElementReferenceException ex)
                     {
                         DateTime after = DateTime.Now;
-                        Logger.Info("Stale element. Progress bar disappeared in time: " + after.Subtract(before));
+                        Logger.Info("Stale element. Error: " + ex.Message + " Progress bar disappeared in time: " + after.Subtract(before));
                         flag = true;
                     }
                     catch (NoSuchElementException ex)
                     {
                         DateTime after = DateTime.Now;
                         Logger.Info("No Element found. Progress bar disappeared in time: " + after.Subtract(before));
-                        throw;
+                        throw ex;
                     }
-
                 }
             }
             catch (Exception ex)

@@ -1,12 +1,12 @@
 ﻿#region Using
 
-using System;
-using System.Linq;
 using IXMWEBv2.AccessLayer.DeviceAccessLayers;
 using IXMWEBv2.Constants;
 using IXMWEBv2.Helper_SDK;
 using IXMWEBv2.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Linq;
 
 #endregion Using
 
@@ -168,11 +168,10 @@ namespace IXMWEBv2.Devices.Configurations.Communication.DTMFSettings
             }
         }
 
-
-
         #endregion Set invalid value in door open code
 
         #endregion Testcase Methods
+
         #region Test Cleanup procedure
 
         [TestCleanup]
@@ -183,7 +182,6 @@ namespace IXMWEBv2.Devices.Configurations.Communication.DTMFSettings
             {
                 dtmfSDK.ResetDTMFSettings();
             }
-
         }
 
         [ClassCleanup]

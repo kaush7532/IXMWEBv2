@@ -1,21 +1,16 @@
 ﻿using IXMWEBv2.Constants;
-using IXMWEBv2.Helper_SDK;
 using IXMWEBv2.Models.DBModels;
 using IXMWEBv2.PageObjects.DevicePageObjects;
 using IXMWEBv2.Resources.Locators;
 using IXMWEBv2.Utils;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IXMWEBv2.AccessLayer.DeviceAccessLayers
 {
     public class DeviceOperations_AL
     {
         private DeviceOperations_PO deviceOperationPO;
-
 
         public DeviceOperations_AL()
         {
@@ -26,6 +21,7 @@ namespace IXMWEBv2.AccessLayer.DeviceAccessLayers
                 throw new Exception("Devices tab UI not loaded");
             }
         }
+
         /// <summary>
         /// Contructor to select device based on name or IP
         /// </summary>
@@ -49,11 +45,11 @@ namespace IXMWEBv2.AccessLayer.DeviceAccessLayers
             bool result = false;
             try
             {
-                //If current selection is not valid device then 
+                //If current selection is not valid device then
                 //{
                 result = deviceOperationPO.SelectDevice(deviceInfofromDb);
 
-                // If device is visible then select 
+                // If device is visible then select
                 if (!result)
                 {
                     deviceOperationPO.ScrollDeviceList();
@@ -77,7 +73,6 @@ namespace IXMWEBv2.AccessLayer.DeviceAccessLayers
 
                 // If still device is not visible then Search device and select
                 //}
-
             }
             catch (Exception ex)
             {
@@ -93,7 +88,7 @@ namespace IXMWEBv2.AccessLayer.DeviceAccessLayers
         public bool IsDeviceListPageUIValid()
         {
             try
-            {                
+            {
                 return deviceOperationPO.IsDevicePageLoaded();
             }
             catch (Exception ex)

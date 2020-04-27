@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using IXMWEBv2.Constants;
+﻿using IXMWEBv2.Constants;
 using IXMWEBv2.Resources.Locators.Logs;
 using IXMWEBv2.Utils;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 
 namespace IXMWEBv2.PageObjects.QuickNavigationPanePageObjects.LogsPageObjects
 {

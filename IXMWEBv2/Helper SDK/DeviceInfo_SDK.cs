@@ -1,11 +1,11 @@
-﻿using System;
-using System.Net.Sockets;
-using System.Threading;
-using IXMSoft.Business.SDK;
+﻿using IXMSoft.Business.SDK;
 using IXMSoft.Business.SDK.Data;
 using IXMSoft.Business.SDK.IXMException;
 using IXMWEBv2.Utils;
 using IXMWEBv2.WebDriverFactory;
+using System;
+using System.Net.Sockets;
+using System.Threading;
 
 namespace IXMWEBv2.Helper_SDK
 {
@@ -47,14 +47,12 @@ namespace IXMWEBv2.Helper_SDK
 
                 Logger.Info("SDK: Starting Wait Connection");
 
-                
-
                 if (WaitForConnection(ipAddress, Convert.ToInt16(port), 15, 10))
                 {
                     nc.OpenConnection();
-                    
+
                     ncm = new NetworkConfigurationManager(nc);
-                    
+
                     dim = new DeviceInfoManager(nc);
                     Logger.Info("SDK: Initialize success for IP: " + ipAddress + " and PORT: " + port);
                 }

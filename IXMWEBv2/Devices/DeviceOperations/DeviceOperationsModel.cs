@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IXMWEBv2.Devices.DeviceOperations
+﻿namespace IXMWEBv2.Devices.DeviceOperations
 {
-    class DeviceOperationsModel
+    internal class DeviceOperationsModel
     {
     }
+
     public class DeviceListModel
     {
         public string DeviceName { get; set; }
@@ -16,8 +11,8 @@ namespace IXMWEBv2.Devices.DeviceOperations
         public string DeviceIp { get; set; }
         public string ProductType { get; set; }
     }
+
     public class SearchedDevices : DeviceListModel
     {
-
-    }    
+    }
 }

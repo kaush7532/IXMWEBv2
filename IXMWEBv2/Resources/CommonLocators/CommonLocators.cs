@@ -54,6 +54,6 @@
         public const string searchDeviceBtn = ".//*[@id = '#GRIDID']//a[contains(.,'Search')]";
         public const string DeviceSelectionChkBox = ".//*[@id='#GRIDID']//div/span[text()='#DEVICENAME']/preceding-sibling::span[1]";
 
-        #endregion
+        #endregion DeviceTreeView
     }
 }

@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IXMWEBv2.QuickNavigationPane.Logs.ApplicationLogs
+﻿namespace IXMWEBv2.QuickNavigationPane.Logs.ApplicationLogs
 {
-
-
     public class ApplicationLogsLocators
     {
         public const string AppLogTile = ".//*[@title='Application Logs']";

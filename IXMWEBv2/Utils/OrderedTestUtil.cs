@@ -7,9 +7,9 @@ using System.Linq;
 namespace IXMWEBv2.Utils
 {
     /// <summary>
-    /// Define and Run a list of ordered tests. 
-    /// 2016/08/25: Posted to SO by crokusek 
-    /// </summary>    
+    /// Define and Run a list of ordered tests.
+    /// 2016/08/25: Posted to SO by crokusek
+    /// </summary>
     public class OrderedTest
     {
         /// <summary>Test Method to run</summary>
@@ -32,8 +32,6 @@ namespace IXMWEBv2.Utils
 
             ContinueOnFailure = continueOnFailure;
         }
-
-
 
         /// <summary>
         /// Run the test saving any exception within ExceptionResult

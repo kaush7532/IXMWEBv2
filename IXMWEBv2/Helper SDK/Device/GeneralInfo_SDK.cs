@@ -10,7 +10,7 @@ namespace IXMWEBv2.Helper_SDK.Device
     {
         private IDeviceInfo deviceInfo;
 
-        public GeneralInfo_SDK(string ipAddress, string port, DeviceConnectionType connectionType):base(ipAddress, port, connectionType)
+        public GeneralInfo_SDK(string ipAddress, string port, DeviceConnectionType connectionType) : base(ipAddress, port, connectionType)
         {
             deviceInfo = dim.GetDeviceInfoByIP();
         }
@@ -79,6 +79,7 @@ namespace IXMWEBv2.Helper_SDK.Device
         #endregion Set Device methods
 
         #region Get Device Methods
+
         /// <summary>
         /// Get generalinfo of device
         /// </summary>
@@ -96,6 +97,7 @@ namespace IXMWEBv2.Helper_SDK.Device
                 throw;
             }
         }
-        #endregion
+
+        #endregion Get Device Methods
     }
 }

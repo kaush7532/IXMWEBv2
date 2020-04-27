@@ -30,6 +30,7 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
         #endregion Common Locators
 
         #region Declaration: DiscoverTab Page
+
         [FindsBy(How = How.Id, Using = RegisterDeviceLocators.SearchBtn)]
         private IWebElement SearchBtn { get; set; }
 
@@ -71,6 +72,7 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
 
         [FindsBy(How = How.Id, Using = RegisterDeviceLocators.EndIpOctet4)]
         private IWebElement EndIpOctet4Txt { get; set; }
+
         #endregion Declaration: DiscoverTab Page
 
         #region Declaration: Discovered Device list
@@ -83,6 +85,7 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
 
         [FindsBy(How = How.XPath, Using = RegisterDeviceLocators.RegisterBtnDevList)]
         private IList<IWebElement> RegisterBtnDeviceList { get; set; }
+
         #endregion Declaration: Discovered Device list
 
         #region Declaration: RegistrationTab Page
@@ -123,7 +126,7 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
         [FindsBy(How = How.Id, Using = RegisterDeviceLocators.DeviceGatewayTxt)]
         private IWebElement DeviceGatewayTxtBox { get; set; }
 
-        #endregion Declaration: RegistrationFormDevice
+        #endregion Declaration: RegistrationTab Page
 
         #region Declaration: SummaryTab Page
 
@@ -143,7 +146,6 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
         private IList<IWebElement> NetworkInfoItemsList { get; set; }
 
         #endregion Declaration: SummaryTab Page
-
 
         #region Methods: Device Discover Page
 
@@ -182,7 +184,6 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
             }
             return flag;
         }
-
 
         /// <summary>
         /// Method to turn on AutoDiscovery switch
@@ -320,7 +321,6 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
         {
             try
             {
-
                 //Change deviceToRegister in format to click single device
                 string deviceToRegisterText = string.Format("{0}\r\n{1}\r\nIP Address\r\n{2}\r\nMAC ID\r\n{3}",
                     deviceToRegister.DeviceName,
@@ -331,7 +331,6 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
 
                 //click device to register
                 ClickElement(deviceToClickforReg);
-
 
                 Logger.Info("Clicked on Register Button on searched device page for device: "
                     + deviceToRegister.DeviceName, deviceToRegister.DeviceIpAddress);
@@ -419,7 +418,7 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
             return flag;
         }
 
-        #endregion
+        #endregion Methods: Device Discover Page
 
         #region Methods: Device Register Page
 
@@ -448,7 +447,6 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
                     DeviceGatewayTxtBox,
                     RegisterBtn
                 };
-
 
                 flag = AreElementsPresent(eleList, waitTime);
                 if (flag)
@@ -507,7 +505,7 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
         /// <summary>
         /// Method to set device name while registration. If null name will not change
         /// If not null then provided deviceName will be set.
-        /// </summary>        
+        /// </summary>
         public void SetDeviceName(string deviceName = null)
         {
             try
@@ -564,7 +562,7 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
 
                 //Case to handle bulk device registration
                 if (IsBulkRegisteration)
-                {                    
+                {
                     if (IsElementPresent(KendoMsgTxt, 5))
                     {
                         Logger.Info("Kendo message visible on device registration form section");
@@ -583,7 +581,6 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
                         Logger.Info("No Error message visible on clicking Register button");
                     }
                 }
-                
             }
             catch (Exception ex)
             {
@@ -592,7 +589,7 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
             }
         }
 
-        #endregion
+        #endregion Methods: Device Register Page
 
         #region Methods: Device Summary Page
 
@@ -636,7 +633,7 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
                 foreach (var item in DeviceInfoItemsList)
                 {
                     string[] arr = item.Text.Split(Environment.NewLine.ToArray(), StringSplitOptions.RemoveEmptyEntries);
-                    //list.Add(new KeyValuePair<DeviceInformationSummaryUI, string>(deviceInfo.DeviceName, arr[1])); 
+                    //list.Add(new KeyValuePair<DeviceInformationSummaryUI, string>(deviceInfo.DeviceName, arr[1]));
                     if (arr[0].Equals("Device Name"))
                     {
                         summarydetails.deviceInfo.DeviceName = arr[1];
@@ -670,7 +667,7 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
                 foreach (var item in NetworkInfoItemsList)
                 {
                     string[] arr = item.Text.Split(Environment.NewLine.ToArray(), StringSplitOptions.RemoveEmptyEntries);
-                    
+
                     if (arr[0].Equals("Comm Mode"))
                     {
                         summarydetails.networkInfo.CommMode = arr[1];
@@ -700,7 +697,6 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
                         summarydetails.networkInfo.DNS = arr[1];
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -729,7 +725,6 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
                 {
                     throw new Exception("Failed to Close Device Registration popup. Unable to view summary page");
                 }
-
             }
             catch (Exception ex)
             {
@@ -753,7 +748,6 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
                     ClickElement(AddNewBtnToContinueReg, elementname: RegisterDeviceLocators.AddNewBtnToContinueReg);
                     Logger.Info("Add New clicked for continue of device registration");
                 }
-
             }
             catch (Exception ex)
             {
@@ -763,11 +757,9 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
             return summaryDetails;
         }
 
-        #endregion
+        #endregion Methods: Device Summary Page
 
         #region Device Registration Search result page
-
-
 
         ///// <summary>
         ///// Method to get DeviceType e.g. Touch FPL 5 from search result of device discovery
@@ -791,14 +783,5 @@ namespace IXMWEBv2.PageObjects.DevicePageObjects
         //}
 
         #endregion Device Registration Search result page
-
-        #region Device Registration form Methods
-
-
-
-
-
-
-        #endregion Device Registration form Methods
     }
 }
