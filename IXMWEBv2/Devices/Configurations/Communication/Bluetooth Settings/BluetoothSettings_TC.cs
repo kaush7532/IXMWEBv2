@@ -1,4 +1,5 @@
-﻿using IXMWEBv2.AccessLayer.DeviceAccessLayers;
+﻿using IXMSoft.Business.SDK.IXMException;
+using IXMWEBv2.AccessLayer.DeviceAccessLayers;
 using IXMWEBv2.Constants;
 using IXMWEBv2.Helper_SDK;
 using IXMWEBv2.Utils;
@@ -67,6 +68,13 @@ namespace IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings
                 //Verify UI
                 Assert.AreEqual(uibluetooth.BluetoothStatus, sdkGetbluetooth, "bluetooth status failed");
             }
+            catch (IXMSDKException sdk)
+            {
+                if (sdk.Message.Equals("Feature not supported"))
+                {
+                    Logger.Info("Device: " + dbInteraction.onlineDeviceInfo.IpAddress + " doesn't support Bluetooth");
+                }
+            }
             catch (Exception ex)
             {
                 Logger.Error(ex, "Fail: Enable bluetooth setting failed.");
@@ -98,6 +106,14 @@ namespace IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings
                 //Verify UI
                 Assert.AreEqual(uibluetooth.BluetoothStatus, sdkGetbluetooth, "Bluetooth status failed");
             }
+            catch (IXMSDKException sdk)
+            {
+                if (sdk.Message.Equals("Feature not supported"))
+                {
+                    Logger.Info("Device: " + dbInteraction.onlineDeviceInfo.IpAddress + " doesn't support Bluetooth");
+                }
+            }
+
             catch (Exception ex)
             {
                 Logger.Error(ex, "Fail: Disable bluetooth setting failed.");
@@ -130,6 +146,13 @@ namespace IXMWEBv2.Devices.Configurations.Communication.Bluetooth_Settings
 
                 //Verify UI
                 Assert.AreEqual(uibluetooth.BluetoothStatus, sdkGetbluetooth, "Bluetooth status failed");
+            }
+            catch (IXMSDKException sdk)
+            {
+                if (sdk.Message.Equals("Feature not supported"))
+                {
+                    Logger.Info("Device: " + dbInteraction.onlineDeviceInfo.IpAddress + " doesn't support Bluetooth");
+                }
             }
             catch (Exception ex)
             {

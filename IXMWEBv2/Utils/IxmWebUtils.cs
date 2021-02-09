@@ -74,7 +74,7 @@ namespace IXMWEBv2.Utils
         [FindsBy(How = How.XPath, Using = HomePageLocators.SmartCardTile)]
         private IWebElement smartCardTile { get; set; }
 
-        [FindsBy(How = How.XPath, Using = HomePageLocators.SyncTile)]
+        [FindsBy(How = How.Id, Using = HomePageLocators.SyncTile)]
         private IWebElement syncTile { get; set; }
 
         [FindsBy(How = How.XPath, Using = HomePageLocators.ToolsTile)]

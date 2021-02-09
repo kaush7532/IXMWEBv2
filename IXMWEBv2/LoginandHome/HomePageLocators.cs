@@ -67,7 +67,7 @@
         public const string SmartCardTile = ".//*[@id='Tile_c30ba477-24df-4f72-a129-c484eaed9ce4']//div[@title='Smart Card']";
         public const string ToolsTile = ".//*[@id='Tile_1eb58806-e264-4fa0-871f-a09f4a4f7b32']//div[@title='Tools']";
         public const string LogsTab = "btnLoadLogs";
-        public const string SyncTile = ".//*[@id='Tile_da7cbc8f-8592-4232-a45b-c2d842dcb7fa']//div[@title='Sync']";
+        public const string SyncTile = "btnSync";
         public const string ConfigTile = ".//*[@id='Tile_0ca775cb-0cbf-45a0-9c94-8c2e68970708']//div[@title='Config']";
         public const string TranslateTile = ".//*[@id='Tile_2d11045a-9bba-44e9-9197-ca50881d050b']//div[@title='Translate']";
         public const string ReportTile = ".//*[@id='Tile_86085377-3d82-4a0f-8763-58f49e6815fe']//div[@title='Report']";
