@@ -40,12 +40,20 @@ namespace IXMWEBv2.AccessLayer.EmployeeAccessLayer
 
         public void AddWithMandatoryFields()
         {
-            addEmployee.ClickAddEmployee();
-            addEmployee.SetFirstName();
-            userID = addEmployee.SetUserId();
+            try
+            {
+                addEmployee.ClickAddEmployee();
+                addEmployee.SetFirstName();
+                userID = addEmployee.SetUserId();
 
-            addEmployee.IsSaveBtnVisible();
-            addEmployee.ClickSaveBtn();
+                addEmployee.IsSaveBtnVisible();
+                addEmployee.ClickSaveBtn();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Failed to add user with mandatory fields");
+                throw;
+            }
         }
 
         public void AddWithMandatoryFields(string userId, string firstName)

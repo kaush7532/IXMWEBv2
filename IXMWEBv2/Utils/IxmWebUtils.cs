@@ -312,8 +312,16 @@ namespace IXMWEBv2.Utils
 
         public bool IsAppLogWindowVisible()
         {
-            WaitForVisibleElement(By.XPath(CommonLocators.applicationLogWindow));
-            return IsElementPresent(appLogWindow);
+            try
+            {
+                WaitForVisibleElement(By.XPath(CommonLocators.applicationLogWindow));
+                return IsElementPresent(appLogWindow);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Failed to verify whether Application log window is visible or not");
+                throw;
+            }
         }
 
         /// <summary>

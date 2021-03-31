@@ -230,8 +230,16 @@ namespace IXMWEBv2.PageObjects.EmployeePageObject
 
         public bool IsAddemployeeBtnVisible()
         {
-            WaitForVisibleElement(By.Id(AddUserPageLocators.AddEmployeeBtn));
-            return addEmployeeBtn.Displayed && addEmployeeBtn.Enabled;
+            try
+            {
+                WaitForVisibleElement(By.Id(AddUserPageLocators.AddEmployeeBtn));
+                return addEmployeeBtn.Displayed && addEmployeeBtn.Enabled;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Failed to check whether add employee button is visible or not");
+                throw;
+            }
         }
 
         public void ClickUserInformation()
@@ -244,16 +252,32 @@ namespace IXMWEBv2.PageObjects.EmployeePageObject
 
         public void ClickAddEmployee()
         {
-            if (IsAddemployeeBtnVisible())
+            try
             {
-                ClickElement(addEmployeeBtn);
+                if (IsAddemployeeBtnVisible())
+                {
+                    ClickElement(addEmployeeBtn);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Failed to Click Add Employee button");
+                throw;
             }
         }
 
         public void SetFirstName(string firstName = null)
         {
-            string fname = string.IsNullOrEmpty(firstName) ? "FAuto" : firstName;
-            EnterValueTextbox(firstNameTxt, fname + Utils.CommonUtils.GetDateTimeAsString());
+            try
+            {
+                string fname = string.IsNullOrEmpty(firstName) ? "FAuto" : firstName;
+                EnterValueTextbox(firstNameTxt, fname + Utils.CommonUtils.GetDateTimeAsString());
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Failed to set first name in text box");
+                throw;
+            }
         }
 
         public void SetLastName(string lastName = null)
@@ -264,9 +288,17 @@ namespace IXMWEBv2.PageObjects.EmployeePageObject
 
         public string SetUserId(string userId = null)
         {
-            string userID = string.IsNullOrEmpty(userId) ? "UID" + Utils.CommonUtils.GetDateTimeAsString() : userId;
-            EnterValueTextbox(userIdTxt, userID);
-            return userID;
+            try
+            {
+                string userID = string.IsNullOrEmpty(userId) ? "UID" + Utils.CommonUtils.GetDateTimeAsString() : userId;
+                EnterValueTextbox(userIdTxt, userID);
+                return userID;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Failed to set userid in text box field");
+                throw;
+            }
         }
 
         public bool IsAddPictureLinkVisible()
@@ -545,9 +577,17 @@ namespace IXMWEBv2.PageObjects.EmployeePageObject
 
         public void ClickSaveBtn()
         {
-            if (IsSaveBtnVisible())
+            try
             {
-                ClickElement(saveBtn);
+                if (IsSaveBtnVisible())
+                {
+                    ClickElement(saveBtn);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Failed to click on Save button");
+                throw;
             }
         }
 
@@ -663,9 +703,17 @@ namespace IXMWEBv2.PageObjects.EmployeePageObject
 
         public bool IsSaveBtnVisible()
         {
-            WaitForVisibleElement(By.XPath(AddUserPageLocators.SaveBtn));
-            WaitForElementPresent(saveBtn);
-            return saveBtn.Displayed && saveBtn.Enabled;
+            try
+            {
+                WaitForVisibleElement(By.XPath(AddUserPageLocators.SaveBtn));
+                WaitForElementPresent(saveBtn);
+                return saveBtn.Displayed && saveBtn.Enabled;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Failed to check whether save button is visible or not");
+                throw;
+            }
         }
 
         public bool isSaveAndEnrollmentBtnVisible()
